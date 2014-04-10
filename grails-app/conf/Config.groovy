@@ -6,7 +6,7 @@ grails.config.locations = [ "classpath:${appName}-config.properties",
                              "classpath:${appName}-config.groovy",
                              "file:${userHome}/.grails/${appName}-config.properties",
                              "file:${userHome}/.grails/${appName}-config.groovy",
-                             "file:/opt/invicta/$appName-config.groovy"]
+                             "file:/opt/$appName/$appName-config.groovy"]
 
 //if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -117,13 +117,12 @@ log4j = {
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
            'org.codehaus.groovy.grails.commons',            // core / classloading
+           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.codehaus.groovy.grails.plugins',            // plugins
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
-
-    debug   'grails.plugins.twitterbootstrap',
-            'org.codehaus.groovy.grails.orm.hibernate'      // hibernate integration
+           'net.sf.ehcache.hibernate',
+           'grails.plugins.twitterbootstrap'
 }
 
 
@@ -146,7 +145,7 @@ grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 grails.resources.modules = {
 
     'custom-bootstrap' {
-        dependsOn 'bootstrap'
+        dependsOn 'bootstrap-js'
         resource url:[dir: 'less', file: 'custom-bootstrap.less'], attrs:[rel: "stylesheet/less", type:'css']
     }
 
