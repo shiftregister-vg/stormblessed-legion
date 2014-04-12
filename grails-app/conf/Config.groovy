@@ -137,17 +137,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
+	'/**/media/**':                   ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 	'/forum/*':                       ['permitAll']
 ]
 
-grails.plugins.twitterbootstrap.fixtaglib = true
-grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
-grails.resources.modules = {
-
-    'custom-bootstrap' {
-        dependsOn 'bootstrap-js'
-        resource url:[dir: 'less', file: 'custom-bootstrap.less'], attrs:[rel: "stylesheet/less", type:'css']
-    }
-
-}

@@ -1,4 +1,3 @@
-import net.invictaguild.content.ForumGroup
 import org.stevegood.util.StringUtils
 
 class BootStrap {
@@ -13,10 +12,15 @@ class BootStrap {
 
         environments {
             development {
-                ['Invicta','Website','Community'].each { groupName ->
-                    ForumGroup group = forumGroupService.create(groupName)
-                    ['General', 'Rift', 'ESO', 'Private'].each { forumName ->
-                        forumService.createForum(group, forumName)
+                [
+                    [name: 'Invicta', forums:['Welcome to Invicta', 'Crafting', 'Events']],
+                    [name: 'Website', forums:['News & Announcements', 'Site Suggestions']],
+                    [name: 'Community', forums:['General Discussion', 'Dungeons', 'Raiding', 'Guild Meetings', 'Off Topic', 'Other Games']],
+                    [name: 'Class Discussion', forums:['Cleric Discussion', 'Mage Discussion', 'Rogue Discussion', 'Warrior Discussion']]
+                ].each { grp ->
+                    def group = forumGroupService.create(grp.name)
+                    grp.forums.each { frm ->
+                        forumService.createForum(group, frm)
                     }
                 }
             }

@@ -62,7 +62,6 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.1'
         compile ":spring-security-core:2.0-RC2"
         compile ":spring-security-ui:1.0-RC1"
-        compile ":less-resources:1.3.3.2"
         compile ":markdown:1.1.1"
 
         // plugins needed at runtime but not for compilation
@@ -70,11 +69,10 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
         runtime ":jquery:1.11.0.2"
         runtime ":resources:1.2.7"
-        runtime ':twitter-bootstrap:3.0.3'
         // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0.1"
+        runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
-        //runtime ":yui-minify-resources:0.1.5"
+        runtime ":yui-minify-resources:0.1.5"
 
         // An alternative to the default resources plugin is the asset-pipeline plugin
         //compile ":asset-pipeline:1.6.1"
