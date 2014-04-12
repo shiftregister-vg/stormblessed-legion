@@ -270,7 +270,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <div class="copyright-text">&copy; ${new Date().format('yyyy')} | <a href="http://invictaguild.net">Invicta</a></div>
+                        <div class="copyright-text">&copy; ${new Date().format('yyyy')} | <a href="http://invictaguild.net">Invicta</a> | v <g:meta name="app.version" /></div>
                     </div>
                     <div class="col-md-6 col-sm-6">
 
