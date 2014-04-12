@@ -6,6 +6,7 @@ class ForumGroup {
     Date lastUpdated
 
     String name
+    int sortPosition
 
     static hasMany = [forums:Forum]
 

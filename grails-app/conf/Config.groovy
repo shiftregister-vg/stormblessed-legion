@@ -123,6 +123,8 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate',
            'grails.plugins.twitterbootstrap'
+
+    //debug "org.grails.plugin.resource"
 }
 
 
@@ -133,12 +135,18 @@ grails.plugin.springsecurity.authority.className = 'net.invictaguild.sec.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
 	'/index':                         ['permitAll'],
+	'/dbconsole/*':                   ['permitAll'],
+	'/dbconsole':                     ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
+	'/**/less/**':                    ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/media/**':                   ['permitAll'],
+	'/**/font/**':                    ['permitAll'],
+	'/**/fonts/**':                   ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 	'/forum/*':                       ['permitAll']
 ]
 
+grails.resources.debug = true

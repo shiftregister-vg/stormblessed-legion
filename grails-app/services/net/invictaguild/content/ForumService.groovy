@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 class ForumService {
 
     def listForums() {
-        Forum.list()
+        Forum.list(sort: 'sortPosition', order: 'asc')
     }
 
     def getForumBySlug(String slug) {
@@ -17,8 +17,13 @@ class ForumService {
         Thread.findByForumAndSlug(forum, slug)
     }
 
-    def createForum(ForumGroup group, String name) {
-        Forum.findOrCreateByNameAndGroup(name, group).save()
+    def createForum(ForumGroup group, String name, boolean flush = false, boolean failOnError = false) {
+        def lastForum = Forum.findAllByGroup(group, [sort: 'sortPosition', order: 'desc', max: 1])?.getAt(0)
+        def nextPos = lastForum ? lastForum.sortPosition+1 : 0
+        def forum = Forum.findOrCreateByNameAndGroup(name, group)
+        if (!forum.id)
+            forum.sortPosition = nextPos
+        forum.save(flush: flush, failOnError: failOnError)
     }
 
     def updateForum(Forum forum, String name) {

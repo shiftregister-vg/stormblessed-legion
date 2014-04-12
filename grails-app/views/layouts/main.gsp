@@ -13,8 +13,8 @@
     <title><g:layoutTitle default="Home"/> - Invicta</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <r:require modules="application"/>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <r:require modules="fontawesome,application"/>
+    %{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>--}%
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
@@ -94,11 +94,11 @@
         <div class="body-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-3">
-                        <g:render template="/panels/userPanel" />
-                    </div>
                     <div class="col-md-9 col-sm-9">
                         <g:layoutBody/>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <g:render template="/panels/userPanel" />
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <div class="copyright-text">&copy; 2013 Zeina Theme | Theme Developed By <a href="http://www.activeaxon.com" target="_blank">ActiveAxon</a></div>
+                        <div class="copyright-text">&copy; ${new Date().format('yyyy')} | <a href="http://invictaguild.net">Invicta</a></div>
                     </div>
                     <div class="col-md-6 col-sm-6">
 

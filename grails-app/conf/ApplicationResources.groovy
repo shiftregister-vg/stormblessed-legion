@@ -1,4 +1,10 @@
 modules = {
+
+    fontawesome {
+        resource url: 'css/font-awesome-ie7.css', bundle: 'fontawesome'
+        resource url: 'css/font-awesome.css', bundle: 'fontawesome'
+    }
+
     application {
         dependsOn 'jquery'
         resource url: 'js/ie-fixes.js', disposition: 'head', wrapper: { s ->
@@ -13,8 +19,6 @@ modules = {
             "<!--[if lt IE 9]>$s<![endif]-->"
         }
 
-        resource url: 'css/font-awesome-ie7.css'
-        resource url: 'css/font-awesome.css'
         resource url: 'css/revolution_settings.css'
         resource url: 'css/bootstrap.css'
         resource url: 'css/eislider.css'

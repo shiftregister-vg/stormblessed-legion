@@ -7,6 +7,7 @@ class Forum {
 
     String name
     String slug
+    int sortPosition
 
     static belongsTo = [group:ForumGroup]
     static hasMany = [threads:Thread]
