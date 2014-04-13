@@ -1,4 +1,7 @@
 import net.invictaguild.content.ForumGroup
+import net.invictaguild.sec.Role
+import net.invictaguild.sec.User
+import net.invictaguild.sec.UserRole
 import org.stevegood.util.StringUtils
 
 class BootStrap {
@@ -10,6 +13,10 @@ class BootStrap {
         String.metaClass.slugify = {->
             StringUtils.slugify( delegate )
         }
+
+        // create default roles
+        Role adminRole = Role.findOrCreateByAuthority('ROLE_ADMIN').save(flush: true, failOnError: true)
+        Role memberRole = Role.findOrCreateByAuthority('ROLE_MEMBER').save(flush: true, failOnError: true)
 
         if (!ForumGroup.count()) {
             [
@@ -23,6 +30,12 @@ class BootStrap {
                     forumService.createForum(group, frm, false, true)
                 }
             }
+        }
+
+        if (!User.count()) {
+            User adminUser = new User(username: 'admin', password: 'admin', enabled: true).save(flush: true)
+            UserRole.create(adminUser, adminRole)
+            UserRole.create(adminUser, memberRole)
         }
     }
     def destroy = {

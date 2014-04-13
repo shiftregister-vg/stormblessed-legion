@@ -133,7 +133,7 @@
                     <div class="col-md-3 col-sm-3 footer-col">
                         <div class="footer-content">
                             <div class="footer-content-logo">
-                                <img src="images/logo.png" alt=""/>
+                                <img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/>
                             </div>
                             <div class="footer-content-text">
                                 <p>Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget

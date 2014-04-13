@@ -13,7 +13,7 @@ class Forum {
     static hasMany = [threads:Thread]
 
     static constraints = {
-        name blank: false, unique: true
+        name blank: false, unique: ['group']
         slug nullable: true, blank: false
     }
 

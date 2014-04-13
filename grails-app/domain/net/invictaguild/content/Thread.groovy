@@ -13,7 +13,7 @@ class Thread {
 
     static constraints = {
         name blank: false
-        slug nullable: true, unique: true
+        slug nullable: true, unique: ['forum']
     }
 
     def beforeInsert() {

@@ -146,7 +146,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/font/**':                    ['permitAll'],
 	'/**/fonts/**':                   ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-	'/forum/*':                       ['permitAll']
+	'/forum/*':                       ['permitAll'],
+    '/forum/createThread':            ['ROLE_MEMBER']
 ]
 
 grails.resources.debug = true
