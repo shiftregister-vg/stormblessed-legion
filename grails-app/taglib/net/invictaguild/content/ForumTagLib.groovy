@@ -35,7 +35,6 @@ class ForumTagLib {
                 }
             }
         }
-        println writer.toString()
         out << writer.toString()
     }
 }
