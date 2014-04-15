@@ -18,6 +18,19 @@
         <h4 class="panel-title">${forum.name}</h4>
     </div>
     <div class="panel-body">
+        <sec:ifAnyGranted roles="ROLE_MEMBER">
+            <div class="btn-group">
+                <g:link class="btn btn-primary" controller="forum" action="createThread" params="${params}"
+                        data-toggle="tooltip" data-placement="bottom" title="New Thread" data-container="body">
+                    <i class="icon-plus"></i>
+                </g:link>
+
+                <g:link class="btn btn-default" controller="forum" action="markThreadAsRead" params="${params}"
+                        data-toggle="tooltip" data-placement="bottom" title="Mark all as read" data-container="body">
+                    <i class="icon-check"></i>
+                </g:link>
+            </div>
+        </sec:ifAnyGranted>
         <table class="table table-striped">
             <g:each in="${forum.threads}" var="thread">
                 <tr>

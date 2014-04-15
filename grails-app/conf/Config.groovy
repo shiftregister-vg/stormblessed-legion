@@ -149,5 +149,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/forum/*':                       ['permitAll'],
     '/forum/createThread':            ['ROLE_MEMBER']
 ]
+grails.plugin.springsecurity.logout.postOnly = false
 
 grails.resources.debug = true

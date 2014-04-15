@@ -66,5 +66,7 @@ modules = {
         resource url: "js/timeago.js"
         resource url: "js/tweetable.jquery.js"
         resource url: "js/zeina.js"
+
+        resource url: 'js/application.js'
     }
 }

@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <h4 class="panel-title">
             <sec:ifLoggedIn>
-                User
+                <sec:username/>
             </sec:ifLoggedIn>
             <sec:ifNotLoggedIn>
                 Login
@@ -11,6 +11,11 @@
     </div>
 
     <div class="panel-body">
-        Login | Register
+        <sec:ifLoggedIn>
+            <g:link controller="logout">Logout</g:link>
+        </sec:ifLoggedIn>
+        <sec:ifNotLoggedIn>
+            <g:link controller="login" action="auth">Login</g:link> | Register
+        </sec:ifNotLoggedIn>
     </div>
 </div>
