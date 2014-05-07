@@ -14,16 +14,18 @@
 
 <body>
 
-<g:form controller="forum" action="saveThread" params="${[forumSlug:params.forumSlug]}" class="form-wrapper" method="post">
+<g:form controller="forum" action="saveThread" params="${[forumSlug: params.forumSlug]}" class="form-wrapper" useToken="true">
     <div class="form-group clearfix">
         <label class="control-label" for="threadName">Subject *</label>
+
         <div class="col-xs-10">
-            <g:textField name="threadName" class="form-control" required="required" value="${thread?.name}" />
+            <g:textField name="threadName" class="form-control" required="required" value="${thread?.name}"/>
         </div>
     </div>
 
     <div class="form-group clearfix">
         <label class="control-label" for="postMarkdown">Body *</label>
+
         <div class="col-xs-10">
             <g:textArea name="postMarkdown" class="form-control" required="required">${post?.markdown}</g:textArea>
         </div>
@@ -31,6 +33,7 @@
 
     <div class="form-group clearfix">
         <label class="control-label"></label>
+
         <div class="col-xs-10">
             <button class="btn btn-primary" type="submit">Post Thread</button>
         </div>
