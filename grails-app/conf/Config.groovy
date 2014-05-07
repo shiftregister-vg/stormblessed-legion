@@ -93,13 +93,15 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+grails.siteName = 'Invicta'
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.serverURL = "http://localhost:8080"
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://beta.invictaguild.net"
     }
 }
 
@@ -124,6 +126,10 @@ log4j = {
            'net.sf.ehcache.hibernate',
            'grails.plugins.twitterbootstrap'
 
+    trace 'grails.app.jobs.grails.plugin.asyncmail', 'grails.app.services.grails.plugin.asyncmail'
+
+    debug 'grails.plugins.quartz'
+
     //debug "org.grails.plugin.resource"
 }
 
@@ -147,7 +153,12 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/fonts/**':                   ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 	'/forum/*':                       ['permitAll'],
-    '/forum/createThread':            ['ROLE_MEMBER']
+    '/forum/createThread':            ['ROLE_MEMBER'],
+    '/user/register':                 ['permitAll'],
+    '/user/saveRegistration':         ['permitAll'],
+    '/user/confirmRegistration':      ['permitAll'],
+    '/user/verifyRegistration':       ['permitAll'],
+    '/site/index':                    ['permitAll']
 ]
 grails.plugin.springsecurity.logout.postOnly = false
 

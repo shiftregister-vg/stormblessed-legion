@@ -15,7 +15,7 @@
             <g:link controller="logout">Logout</g:link>
         </sec:ifLoggedIn>
         <sec:ifNotLoggedIn>
-            <g:link controller="login" action="auth">Login</g:link> | Register
+            <g:link controller="login" action="auth">Login</g:link> | <g:link controller="user" action="register">Register</g:link>
         </sec:ifNotLoggedIn>
     </div>
 </div>

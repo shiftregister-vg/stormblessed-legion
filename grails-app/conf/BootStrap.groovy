@@ -33,7 +33,7 @@ class BootStrap {
         }
 
         if (!User.count()) {
-            User adminUser = new User(username: 'admin', password: 'admin', enabled: true).save(flush: true)
+            User adminUser = new User(username: 'admin', password: 'admin', email: 'admin@localhost.com', enabled: true).save(flush: true)
             UserRole.create(adminUser, adminRole)
             UserRole.create(adminUser, memberRole)
         }

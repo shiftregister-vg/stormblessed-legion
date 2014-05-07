@@ -41,9 +41,9 @@
             <div class="container">
                 <div class="row header">
                     <div class="col-md-2 col-sm-4 col-xs-4 logo">
-                        <a href="/">
+                        <g:link controller="site" action="index">
                             <img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/>
-                        </a>
+                        </g:link>
                     </div>
 
                     <div class="col-md-10">
