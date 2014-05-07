@@ -41,10 +41,11 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenCentral()
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
-        //mavenRepo "http://repository.codehaus.org"
+        mavenRepo "http://repository.codehaus.org"
         mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "http://repository.jboss.com/maven2/"
         mavenRepo "http://repo.spring.io/milestone/"
+        mavenRepo "http://snapshots.repository.codehaus.org/"
     }
 
     dependencies {
@@ -64,6 +65,9 @@ grails.project.dependency.resolution = {
         compile ":spring-security-ui:1.0-RC1"
         compile ":markdown:1.1.1"
         compile ":less-resources:1.3.3.2"
+        compile ":mail:1.0.4"
+        compile ":asynchronous-mail:1.0"
+        compile ":quartz:1.0.1"
 
         // plugins needed at runtime but not for compilation
         runtime ':hibernate:3.6.10.13' // ':hibernate4:4.3.5.1' for Hibernate 4
@@ -83,5 +87,7 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.5.3"
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
+
+        provided ":version-update:1.1.0"
     }
 }
