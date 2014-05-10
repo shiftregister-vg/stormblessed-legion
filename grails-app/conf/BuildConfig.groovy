@@ -35,6 +35,7 @@ grails.project.dependency.resolution = {
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
+        mavenRepo "http://artifactory.bnsf.com:8081/artifactory/repo"
         grailsPlugins()
         grailsHome()
         mavenLocal()

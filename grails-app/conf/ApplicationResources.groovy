@@ -69,4 +69,53 @@ modules = {
 
         resource url: 'js/application.js'
     }
+
+    jquery2 {
+        resource url: 'admin/js/libs/jquery-2.0.2.min.js'
+    }
+
+    jqueryUI1103 {
+        dependsOn 'jquery2'
+        resource url: 'admin/js/libs/jquery-ui-1.10.3.min.js'
+    }
+
+    flot {
+        resource url: 'admin/js/plugin/flot/jquery.flot.cust.js'
+        resource url: 'admin/js/plugin/flot/jquery.flot.resize.min.js'
+        resource url: 'admin/js/plugin/flot/jquery.flot.tooltip.min.js'
+    }
+
+    vectormap {
+        dependsOn 'jquery2'
+        resource url: 'admin/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js'
+        resource url: 'admin/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js'
+    }
+
+    adminCalendar {
+        dependsOn 'jquery2'
+        resource url: 'admin/js/plugin/fullcalendar/jquery.fullcalendar.min.js'
+    }
+
+    admin {
+        dependsOn 'jquery2,jqueryUI1103,flot,vectormap,adminCalendar'
+        // css
+        resource url: 'admin/css/bootstrap.min.css'
+        resource url: 'admin/css/font-awesome.min.css'
+        resource url: 'admin/css/smartadmin-production.css'
+        resource url: 'admin/css/smartadmin-skins.css'
+        resource url: 'admin/css/demo.css'
+
+        // js
+        resource url: 'admin/js/bootstrap/bootstrap.min.js'
+        resource url: 'admin/js/notification/SmartNotification.min.js'
+        resource url: 'admin/js/smartwidgets/jarvis.widget.min.js'
+        resource url: 'admin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js'
+        resource url: 'admin/js/plugin/sparkline/jquery.sparkline.min.js'
+        resource url: 'admin/js/plugin/jquery-validate/jquery.validate.min.js'
+        resource url: 'admin/js/plugin/masked-input/jquery.maskedinput.min.js'
+        resource url: 'admin/js/plugin/select2/select2.min.js'
+        resource url: 'admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js'
+        resource url: 'admin/js/plugin/msie-fix/jquery.mb.browser.min.js'
+        resource url: 'admin/js/plugin/fastclick/fastclick.js'
+    }
 }

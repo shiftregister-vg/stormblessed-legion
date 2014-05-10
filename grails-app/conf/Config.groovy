@@ -148,6 +148,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/less/**':                    ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
+	'/**/img/**':                     ['permitAll'],
 	'/**/media/**':                   ['permitAll'],
 	'/**/font/**':                    ['permitAll'],
 	'/**/fonts/**':                   ['permitAll'],
@@ -158,7 +159,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/user/saveRegistration':         ['permitAll'],
     '/user/confirmRegistration':      ['permitAll'],
     '/user/verifyRegistration':       ['permitAll'],
-    '/site/index':                    ['permitAll']
+    '/site/index':                    ['permitAll'],
+    '/admin/*':                       ['ROLE_ADMIN'],
+    '/admin/ajax/*':                  ['ROLE_ADMIN']
 ]
 grails.plugin.springsecurity.logout.postOnly = false
 

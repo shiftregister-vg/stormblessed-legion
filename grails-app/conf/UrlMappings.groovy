@@ -16,5 +16,6 @@ class UrlMappings {
         "/forums"(controller: 'forum', action: 'index')
         "/register"(controller: 'user', action: 'register')
         "/login"(controller: 'login', action: 'auth')
+        "/admin"(controller: 'admin', action: 'index')
 	}
 }
