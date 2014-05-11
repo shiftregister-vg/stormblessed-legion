@@ -32,7 +32,14 @@
 
 <ul>
 <li class="">
-    <a href="ajax/dashboard.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+    <g:link controller="admin" action="dashboard" title="Dashboard">
+        <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span>
+    </g:link>
+</li>
+<li>
+    <g:link controller="admin" action="users" title="Users">
+        <i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span>
+    </g:link>
 </li>
 <li>
     <a href="ajax/inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inbox</span><span class="badge pull-right inbox-badge">14</span></a>
