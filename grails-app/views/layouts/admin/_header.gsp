@@ -2,7 +2,11 @@
     <div id="logo-group">
 
         <!-- PLACE YOUR LOGO HERE -->
-        <span id="logo"> <img src="${resource(dir: 'admin/img', file: 'logo-white.png')}" alt="SmartAdmin"> </span>
+        <span id="logo">
+            <g:link controller="admin" action="index">
+                <img src="${resource(dir: 'admin/img', file: 'logo.png')}" alt="SmartAdmin">
+            </g:link>
+        </span>
         <!-- END LOGO PLACEHOLDER -->
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0

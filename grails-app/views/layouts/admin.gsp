@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${resource(dir: 'admin/css', file: 'font-awesome.min.css')}">
 
     <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${resource(dir: 'admin/css', file: 'smartadmin-production.css')}">
+    <link rel="stylesheet" type="text/css" media="screen" href="${resource(dir: 'admin/css', file: 'smartadmin-production_unminified.css')}">
     <link rel="stylesheet" type="text/css" media="screen" href="${resource(dir: 'admin/css', file: 'smartadmin-skins.css')}">
 
     <!-- SmartAdmin RTL Support is under construction
@@ -25,8 +25,7 @@
 		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
 		<link rel="stylesheet" type="text/css" media="screen" href="/admin/css/your_style.css"> -->
 
-    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${resource(dir: 'admin/css', file: 'demo.css')}">
+
 
     <!-- FAVICONS -->
     <link rel="icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
