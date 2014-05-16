@@ -8,6 +8,7 @@ class BootStrap {
 
     def forumService
     def forumGroupService
+    def ts3Service
 
     def init = { servletContext ->
         String.metaClass.slugify = {->
@@ -37,6 +38,8 @@ class BootStrap {
             UserRole.create(adminUser, adminRole)
             UserRole.create(adminUser, memberRole)
         }
+
+        ts3Service.initChatBot()
     }
     def destroy = {
     }
