@@ -12,7 +12,7 @@ class Ts3Service {
     def initChatBot() {
         String nick = grailsApplication.config.grails.plugin.teamspeak3.nick
         teamSpeakService.initChatBot { TextMessageEvent event ->
-            if (event.invokerName != nick) {
+            if (event.invokerName != nick && !event.invokerName.contains(nick) && !nick.contains(event.invokerName)) {
                 if (event.message.startsWith('!')) {
                     if (event.message.toLowerCase() == '!hello') {
                         String timeOfDay = 'day'
@@ -26,7 +26,7 @@ class Ts3Service {
                         } else {
                             timeOfDay = 'night'
                         }
-                        sendMessage "Hello ${event.invokerName}, I hope you are having a pleasant $timeOfDay!"
+                        ts3Api.sendPrivateMessage event.invokerId, "Hello ${event.invokerName}, I hope you are having a pleasant $timeOfDay!"
                     }
                 } else if (event.message.contains(nick)) {
                     sendMessage "${event.invokerName}, I heard that... I'm always listening... Always..."
