@@ -41,6 +41,13 @@
         <i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span>
     </g:link>
 </li>
+
+<li>
+    <g:link controller="admin" action="teamSpeak" title="TeamSpeak">
+        <i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">TeamSpeak</span>
+    </g:link>
+</li>
+
 <li>
     <a href="ajax/inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inbox</span><span class="badge pull-right inbox-badge">14</span></a>
 </li>

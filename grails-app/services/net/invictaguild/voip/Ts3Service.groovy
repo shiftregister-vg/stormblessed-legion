@@ -68,4 +68,11 @@ class Ts3Service {
     def setGroupsAndPrivileges(int clientId, def groups, def privileges) {
         // TODO: set the groups and privs for the supplied clientId
     }
+
+    def restartChatBot() {
+        teamSpeakService.exit()
+        teamSpeakService.connect()
+        initChatBot()
+        initJoinHandler()
+    }
 }

@@ -5,6 +5,7 @@ import net.invictaguild.sec.User
 
 class AdminController {
 
+    def ts3Service
     def userService
 
     def index() {}
@@ -14,6 +15,16 @@ class AdminController {
     def users() {
         def userList = User.list(sort: 'username', order: 'ascending')
         [users: userList]
+    }
+
+    def teamSpeak() {
+
+    }
+
+    def ajaxRestartTS3ChatBot() {
+        ts3Service.restartChatBot()
+        def result = [success: true]
+        render result as JSON
     }
 
     def ajaxSaveUser() {
