@@ -15,6 +15,7 @@ class UrlMappings {
         "/forums/$forumSlug?"(controller: 'forum', action: 'viewForum')
         "/forums"(controller: 'forum', action: 'index')
         "/register"(controller: 'user', action: 'register')
+        "/ts/login/$token"(controller: 'ts', action: 'login')
         "/login"(controller: 'login', action: 'auth')
         "/admin"(controller: 'admin', action: 'index')
 	}

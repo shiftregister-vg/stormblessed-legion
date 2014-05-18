@@ -40,6 +40,7 @@ class BootStrap {
         }
 
         ts3Service.initChatBot()
+        ts3Service.initJoinHandler()
     }
     def destroy = {
     }

@@ -119,6 +119,15 @@
     <div class="content-wrapper hide-util-loading">
         <div class="body-wrapper">
             <div class="container">
+                <g:if test="${flash?.message?.size()}">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9">
+                            <div class="alert alert-${flash?.alert ?: 'info'}">
+                                ${flash.message}
+                            </div>
+                        </div>
+                    </div>
+                </g:if>
                 <div class="row">
                     <div class="col-md-9 col-sm-9">
                         <g:layoutBody/>
