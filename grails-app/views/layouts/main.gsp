@@ -16,7 +16,7 @@
     <title><g:layoutTitle default="Home"/> - Invicta</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <r:require modules="fontawesome,application"/>
+    %{--<r:require modules="fontawesome,application"/>--}%
     %{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>--}%
 
     <!-- Fonts -->
@@ -24,17 +24,35 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <!-- Icons -->
-    <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}" />
-    <link rel="apple-touch-icon" sizes="57x57" href="${resource(dir: 'images', file: 'apple-touch-icon-57x57.png')}" />
-    <link rel="apple-touch-icon" sizes="72x72" href="${resource(dir: 'images', file: 'apple-touch-icon-72x72.png')}" />
-    <link rel="apple-touch-icon" sizes="76x76" href="${resource(dir: 'images', file: 'apple-touch-icon-76x76.png')}" />
-    <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-114x114.png')}" />
-    <link rel="apple-touch-icon" sizes="120x120" href="${resource(dir: 'images', file: 'apple-touch-icon-120x120.png')}" />
-    <link rel="apple-touch-icon" sizes="144x144" href="${resource(dir: 'images', file: 'apple-touch-icon-144x144.png')}" />
-    <link rel="apple-touch-icon" sizes="152x152" href="${resource(dir: 'images', file: 'apple-touch-icon-152x152.png')}" />
+    <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <asset:link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+    <asset:link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <asset:link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png'" />
+    <asset:link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png'" />
+    <asset:link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <asset:link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <asset:link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <asset:link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png" />
 
-    <r:layoutResources/>
+    <!-- dependsOn 'jquery' -->
+    <!--[if lt IE 9]>
+        <asset:javascript src="ie-fixes.js" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <asset:javascript src="_excanvas.compiled.js" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <asset:stylesheet href="ie-fixes.css" />
+    <![endif]-->
+
+
+    <!--[if lt IE 9]>
+    <asset:javascript src="respond.js" />
+    <![endif]-->
+
+    <asset:stylesheet href="application.css" />
 </head>
 <body class="bgpattern-black-twill">
 
@@ -326,6 +344,21 @@
 
 </div>
 
-<r:layoutResources/>
+<g:if env="production">
+    <asset:script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '${grailsApplication.config.google?.analytics?.account ?: ''}']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </asset:script>
+</g:if>
+
+<asset:javascript src="application.js" />
+<asset:deferredScripts/>
 </body>
 </html>

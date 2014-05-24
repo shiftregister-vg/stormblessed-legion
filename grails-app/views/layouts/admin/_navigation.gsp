@@ -7,7 +7,7 @@
     <span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
         <a href="javascript:void(0);" id="show-shortcut">
-            <img src="/admin/img/avatars/sunny.png" alt="me" class="online" />
+            <asset:image src="admin/avatars/sunny.png" alt="me" class="online" />
             <span>
                 john.doe
             </span>

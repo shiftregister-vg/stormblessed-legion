@@ -189,30 +189,30 @@
         loadDataTableScripts();
         function loadDataTableScripts() {
 
-            loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'jquery.dataTables-cust.min.js')}", dt_2);
+            loadScript("${assetPath(src: 'admin/plugin/datatables/jquery.dataTables-cust.min.js')}", dt_2);
 
             function dt_2() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'ColReorder.min.js')}", dt_3);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/ColReorder.min.js')}", dt_3);
             }
 
             function dt_3() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'FixedColumns.min.js')}", dt_4);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/FixedColumns.min.js')}", dt_4);
             }
 
             function dt_4() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'ColVis.min.js')}", dt_5);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/ColVis.min.js')}", dt_5);
             }
 
             function dt_5() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'ZeroClipboard.js')}", dt_6);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/ZeroClipboard.js')}", dt_6);
             }
 
             function dt_6() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables/media/js', file: 'TableTools.min.js')}", dt_7);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/media/js/TableTools.min.js')}", dt_7);
             }
 
             function dt_7() {
-                loadScript("${resource(dir: 'admin/js/plugin/datatables', file: 'DT_bootstrap.js')}", runDataTables);
+                loadScript("${assetPath(src: 'admin/plugin/datatables/DT_bootstrap.js')}", runDataTables);
             }
 
         }

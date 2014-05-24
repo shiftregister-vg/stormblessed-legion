@@ -366,28 +366,28 @@
                 <div class="chat-list-body custom-scroll">
                     <ul id="chat-users">
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/5.png" alt="">Robin Berry <span class="badge badge-inverse">23</span><span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/5.png" alt="" />Robin Berry <span class="badge badge-inverse">23</span><span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Mark Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Mark Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Belmain Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Belmain Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Galvitch Drewbery <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Galvitch Drewbery <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Sadi Orlaf <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Sadi Orlaf <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Markus <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Markus <span class="state"><i class="last-online pull-right">2m</i></span> </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/sunny.png" alt="">Sunny <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/sunny.png" alt="" />Sunny <span class="state"><i class="last-online pull-right">2m</i></span> </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Denmark <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+                            <a href="javascript:void(0);"><asset:image src="admin/avatars/male.png" alt="" />Denmark <span class="state"><i class="last-online pull-right">2m</i></span> </a>
                         </li>
                     </ul>
                 </div>
@@ -415,7 +415,7 @@
             <div id="chat-body" class="chat-body custom-scroll">
                 <ul>
                     <li class="message">
-                        <img src="img/avatars/5.png" class="online" alt="">
+                        <img src="${assetPath(src: 'admin/avatars/5.png')}" class="online" alt="">
                         <div class="message-text">
                             <time>
                                 2014-01-13
@@ -430,7 +430,7 @@
                             </p> </div>
                     </li>
                     <li class="message">
-                        <img src="img/avatars/sunny.png" class="online" alt="">
+                        <img src="${assetPath(src: 'admin/avatars/sunny.png')}" class="online" alt="">
                         <div class="message-text">
                             <time>
                                 2014-01-13
@@ -998,14 +998,14 @@
      */
 
     // Load FLOAT dependencies (related to page)
-    loadScript("js/plugin/flot/jquery.flot.cust.js", loadFlotResize);
+    loadScript("${assetPath(src: 'admin/plugin/flot/jquery.flot.cust.js')}", loadFlotResize);
 
     function loadFlotResize() {
-        loadScript("js/plugin/flot/jquery.flot.resize.js", loadFlotToolTip);
+        loadScript("${assetPath(src: 'admin/plugin/flot/jquery.flot.resize.js')}", loadFlotToolTip);
     }
 
     function loadFlotToolTip() {
-        loadScript("js/plugin/flot/jquery.flot.tooltip.js", generatePageGraphs);
+        loadScript("${assetPath(src: 'admin/plugin/flot/jquery.flot.tooltip.js')}", generatePageGraphs);
     }
 
     function generatePageGraphs() {
@@ -1367,11 +1367,11 @@
     };
 
     // Load Map dependency 1 then call for dependency 2
-    loadScript("js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js", loadMapFile);
+    loadScript("${assetPath(src: 'admin/plugin/vectormap/jquery-jvectormap-1.2.2.min.js')}", loadMapFile);
 
     // Load Map dependency 2 then rendeder Map
     function loadMapFile() {
-        loadScript("js/plugin/vectormap/jquery-jvectormap-world-mill-en.js", renderVectorMap);
+        loadScript("${assetPath(src: 'admin/plugin/vectormap/jquery-jvectormap-world-mill-en.js')}", renderVectorMap);
     }
 
     function renderVectorMap() {
@@ -1409,7 +1409,7 @@
      */
 
     // Load Calendar dependency then setup calendar
-    loadScript("js/plugin/fullcalendar/jquery.fullcalendar.min.js", setupCalendar);
+    loadScript("${assetPath(src: 'admin/plugin/fullcalendar/jquery.fullcalendar.min.js')}", setupCalendar);
 
     function setupCalendar() {
 

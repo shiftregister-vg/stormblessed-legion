@@ -11,7 +11,7 @@
         Coming Soon!
     </h4>
     <div class="content-box-text">
-        This is the future home of the Invicta gaming community. While the site is under construction please visit <a href="http://invictaguild.net.">invictaguild.net</a> to stay up to date with events and news.
+        This is the future home of the Invicta gaming community. While the site is under construction please visit <a href="http://invictaguild.net">invictaguild.net</a> to stay up to date with events and news.
     </div>
 
 </div>

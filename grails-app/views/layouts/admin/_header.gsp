@@ -4,7 +4,7 @@
         <!-- PLACE YOUR LOGO HERE -->
         <span id="logo">
             <g:link controller="admin" action="index">
-                <img src="${resource(dir: 'admin/img', file: 'logo.png')}" alt="SmartAdmin">
+                <asset:image src="admin/logo.png" alt="SmartAdmin" />
             </g:link>
         </span>
         <!-- END LOGO PLACEHOLDER -->
@@ -120,16 +120,16 @@
         <!-- multiple lang dropdown : find all flags in the image folder -->
         <ul class="header-dropdown-list hidden-xs">
             <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt="" src="${resource(dir: 'admin/img/flags', file: 'us.png')}"> <span> US </span> <i class="fa fa-angle-down"></i> </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <asset:image alt="" src="admin/flags/us.png" /> <span> US </span> <i class="fa fa-angle-down"></i> </a>
                 <ul class="dropdown-menu pull-right">
                     <li class="active">
-                        <a href="javascript:void(0);"><img alt="" src="${resource(dir: 'admin/img/flags', file: 'us.png')}"> US</a>
+                        <a href="javascript:void(0);"><asset:image alt="" src="admin/flags/us.png" /> US</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);"><img alt="" src="${resource(dir: 'admin/img/flags', file: 'es.png')}"> Spanish</a>
+                        <a href="javascript:void(0);"><asset:image alt="" src="admin/flags/es.png" /> Spanish</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);"><img alt="" src="${resource(dir: 'admin/img/flags', file: 'de.png')}"> German</a>
+                        <a href="javascript:void(0);"><asset:image alt="" src="admin/flags/de.png" /> German</a>
                     </li>
                 </ul>
             </li>

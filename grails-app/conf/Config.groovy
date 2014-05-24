@@ -38,10 +38,6 @@ grails.mime.types = [ // the first one is the default format
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
-// What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
-
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
 
@@ -123,14 +119,11 @@ log4j = {
            'org.codehaus.groovy.grails.plugins',            // plugins
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate',
-           'grails.plugins.twitterbootstrap'
+           'net.sf.ehcache.hibernate'
 
-    trace 'grails.app.jobs.grails.plugin.asyncmail', 'grails.app.services.grails.plugin.asyncmail'
+//    trace 'grails.app.jobs.grails.plugin.asyncmail', 'grails.app.services.grails.plugin.asyncmail'
 
-    debug 'grails.plugins.quartz'
-
-    //debug "org.grails.plugin.resource"
+//    debug 'grails.plugins.quartz'
 }
 
 
@@ -144,15 +137,10 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/dbconsole/*':                   ['permitAll'],
 	'/dbconsole':                     ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/less/**':                    ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/img/**':                     ['permitAll'],
 	'/**/media/**':                   ['permitAll'],
 	'/**/font/**':                    ['permitAll'],
 	'/**/fonts/**':                   ['permitAll'],
-	'/**/favicon.ico':                ['permitAll'],
+	'/assets/**':                     ['permitAll'],
 	'/forum/*':                       ['permitAll'],
     '/forum/createThread':            ['ROLE_MEMBER'],
     '/user/register':                 ['permitAll'],
@@ -165,5 +153,3 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/admin/ajax/*':                  ['ROLE_ADMIN']
 ]
 grails.plugin.springsecurity.logout.postOnly = false
-
-grails.resources.debug = true

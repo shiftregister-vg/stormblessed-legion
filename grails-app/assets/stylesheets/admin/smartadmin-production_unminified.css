@@ -355,7 +355,7 @@ body.nooverflow {
 	 * WIDGET BODY AJAX LOAD
 	 */
 .widget-body-ajax-loading::before {
-  content: url('../img/ajax-loader.gif');
+  content: url('ajax-loader.gif');
   padding-top: 18%;
   text-align: center;
   font-weight: bold;
@@ -2051,7 +2051,7 @@ body.nooverflow {
   width: 30px;
 }
 .editableform-loading {
-  background: url('../img/loading.gif') center center no-repeat;
+  background: url('loading.gif') center center no-repeat;
   height: 25px;
   width: auto;
   min-width: 25px;
@@ -2106,7 +2106,7 @@ body.nooverflow {
 }
 /* IOS-style clear button for text inputs */
 .editable-clear-x {
-  background: url('../img/clear.png') center center no-repeat;
+  background: url('clear.png') center center no-repeat;
   display: block;
   width: 13px;
   height: 13px;
@@ -2835,7 +2835,7 @@ table.fc-border-separate {
 .colorpicker-saturation {
   width: 100px;
   height: 100px;
-  background-image: url("../img/saturation.png");
+  background-image: url("saturation.png");
   cursor: crosshair;
   float: left;
 }
@@ -2877,10 +2877,10 @@ table.fc-border-separate {
   margin-top: -1px;
 }
 .colorpicker-hue {
-  background-image: url("../img/hue.png");
+  background-image: url("hue.png");
 }
 .colorpicker-alpha {
-  background-image: url("../img/alpha.png");
+  background-image: url("alpha.png");
   display: none;
 }
 .colorpicker {
@@ -2938,7 +2938,7 @@ table.fc-border-separate {
   height: 10px;
   margin-top: 5px;
   clear: both;
-  background-image: url("../img/alpha.png");
+  background-image: url("alpha.png");
   background-position: 0 100%;
 }
 .colorpicker-color div {
@@ -7402,7 +7402,7 @@ table.fc-border-separate {
   -o-transition: opacity 0.3s ease-in-out;
   -ms-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
-  background-image: url("../img/dropzone/spritemap.png");
+  background-image: url("dropzone/spritemap.png");
   background-repeat: no-repeat;
   background-position: 0 0;
   position: absolute;
@@ -7476,7 +7476,7 @@ table.fc-border-separate {
   -o-transition: opacity 0.4s ease-in-out;
   -ms-transition: opacity 0.4s ease-in-out;
   transition: opacity 0.4s ease-in-out;
-  background-image: url("../img/dropzone/spritemap.png");
+  background-image: url("dropzone/spritemap.png");
   background-repeat: no-repeat;
 }
 .dropzone .dz-preview .dz-error-mark span,
@@ -7512,7 +7512,7 @@ table.fc-border-separate {
   left: 0;
   width: 0%;
   height: 100%;
-  background-image: url("../img/dropzone/spritemap.png");
+  background-image: url("dropzone/spritemap.png");
   background-repeat: repeat-x;
   background-position: 0px -400px;
 }
@@ -7973,19 +7973,19 @@ div.dataTables_paginate .pagination {
   padding-right: 20px;
 }
 .dataTables_wrapper table.table thead .sorting {
-  background: url('../img/sort_both.png') no-repeat center right;
+  background: url('sort_both.png') no-repeat center right;
 }
 .dataTables_wrapper table.table thead .sorting_asc {
-  background: url('../img/sort_asc.png') no-repeat center right;
+  background: url('sort_asc.png') no-repeat center right;
 }
 .dataTables_wrapper table.table thead .sorting_desc {
-  background: url('../img/sort_desc.png') no-repeat center right;
+  background: url('sort_desc.png') no-repeat center right;
 }
 .dataTables_wrapper table.table thead .sorting_asc_disabled {
-  background: url('../img/sort_asc_disabled.png') no-repeat center right;
+  background: url('sort_asc_disabled.png') no-repeat center right;
 }
 .dataTables_wrapper table.table thead .sorting_desc_disabled {
-  background: url('../img/sort_desc_disabled.png') no-repeat center right;
+  background: url('sort_desc_disabled.png') no-repeat center right;
 }
 .dataTables_wrapper table.dataTable th:active {
   outline: none;
@@ -13760,7 +13760,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
   margin: 0;
 }
 #login .hero {
-  background-image: url("../img/gradient/login.png");
+  background-image: url("gradient/login.png");
   background-repeat: no-repeat;
   background-position: 0 137px;
   height: 360px;
@@ -14898,11 +14898,11 @@ Version: 3.4.5 Timestamp: Mon Nov  4 08:22:42 PST 2013
   top: 34%;
 }
 .select2-search input.select2-active {
-  background: #ffffff url('../img/select2-spinner.gif') no-repeat 100%;
-  background: url('../img/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
-  background: url('../img/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
-  background: url('../img/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
-  background: url('../img/select2-spinner.gif') no-repeat 100%, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+  background: #ffffff url('select2-spinner.gif') no-repeat 100%;
+  background: url('select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
+  background: url('select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
+  background: url('select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
+  background: url('select2-spinner.gif') no-repeat 100%, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
 }
 .select2-container-active .select2-choice,
 .select2-container-active .select2-choices {
@@ -15038,7 +15038,7 @@ disabled look for disabled choices in the results dropdown
   display: none;
 }
 .select2-more-results.select2-active {
-  background: #f4f4f4 url('../img/select2-spinner.gif') no-repeat 100%;
+  background: #f4f4f4 url('select2-spinner.gif') no-repeat 100%;
 }
 .select2-more-results {
   background: #f4f4f4;
@@ -15103,7 +15103,7 @@ disabled look for disabled choices in the results dropdown
   background: transparent !important;
 }
 .select2-container-multi .select2-choices .select2-search-field input.select2-active {
-  background: #ffffff url('../img/select2-spinner.gif') no-repeat 100% !important;
+  background: #ffffff url('select2-spinner.gif') no-repeat 100% !important;
 }
 .select2-default {
   color: #999 !important;
@@ -15425,7 +15425,7 @@ html {
   height: 100%;
   overflow-x: hidden !important;
   /*- disabled for widget chrome bug */
-  background: url('../img/mybg.png') #ffffff;
+  background: url('mybg.png') #ffffff;
 }
 body {
   margin: 0;
@@ -15433,7 +15433,7 @@ body {
   height: 100%;
   overflow: hidden;
   /*- disabled for widget chrome bug */
-  background: url('../img/mybg.png') #ffffff;
+  background: url('mybg.png') #ffffff;
   direction: ltr;
 }
 a:hover,
@@ -16755,7 +16755,7 @@ input[type="url"].ui-autocomplete-loading,
 input[type="search"].ui-autocomplete-loading,
 input[type="tel"].ui-autocomplete-loading,
 input[type="color"].ui-autocomplete-loading {
-  background-image: url("../img/select2-spinner.gif") !important;
+  background-image: url("select2-spinner.gif") !important;
   background-repeat: no-repeat;
   background-position: 99% 50%;
   padding-right: 27px;
@@ -17031,7 +17031,7 @@ hr.simple {
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   font-weight: bold;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-image: url('../img/pattern/overlay-pattern.png');
+  background-image: url('pattern/overlay-pattern.png');
 }
 .progress-striped .progress-bar {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));

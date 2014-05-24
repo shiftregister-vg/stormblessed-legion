@@ -43,5 +43,6 @@ class BootStrap {
         ts3Service.initJoinHandler()
     }
     def destroy = {
+        ts3Service.teamSpeakService.ts3Api.exit()
     }
 }

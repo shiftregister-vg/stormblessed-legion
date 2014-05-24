@@ -35,7 +35,6 @@ grails.project.dependency.resolution = {
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
-        mavenRepo "http://artifactory.bnsf.com:8081/artifactory/repo"
         grailsPlugins()
         grailsHome()
         mavenLocal()
@@ -60,35 +59,28 @@ grails.project.dependency.resolution = {
         build ':tomcat:7.0.52.1'
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.3"
-        compile ':cache:1.1.1'
-        compile ":spring-security-core:2.0-RC2"
-        compile ":spring-security-ui:1.0-RC1"
+        compile ":scaffolding:2.1.0"
+        compile ':cache:1.1.3'
+        compile ":spring-security-core:2.0-RC3"
         compile ":markdown:1.1.1"
-        compile ":less-resources:1.3.3.2"
-        compile ":mail:1.0.4"
+        compile ":mail:1.0.5"
         compile ":asynchronous-mail:1.0"
         compile ":quartz:1.0.1"
         compile ":teamspeak3:0.1.6"
 
         // plugins needed at runtime but not for compilation
-        runtime ':hibernate:3.6.10.13' // ':hibernate4:4.3.5.1' for Hibernate 4
+        runtime ':hibernate4:4.3.5.2'
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.0.2"
-        runtime ":resources:1.2.7"
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0.1"
-        //runtime ":cached-resources:1.1"
-        //runtime ":yui-minify-resources:0.1.5"
 
         // An alternative to the default resources plugin is the asset-pipeline plugin
-        //compile ":asset-pipeline:1.6.1"
+        compile ":asset-pipeline:1.8.7"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.5.5"
-        //compile ":less-asset-pipeline:1.5.3"
+        compile ":less-asset-pipeline:1.7.0"
         //compile ":coffee-asset-pipeline:1.5.0"
-        //compile ":handlebars-asset-pipeline:1.3.0.1"
+        compile ":handlebars-asset-pipeline:1.3.0.3"
 
         provided ":version-update:1.1.0"
     }
