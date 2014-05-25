@@ -12,14 +12,23 @@ class AdminController {
 
     def dashboard() {}
 
-    def users() {
-        def userList = User.list(sort: 'username', order: 'ascending')
-        [users: userList]
+    def users() {}
+
+    def ajaxLoadUsers() {
+        def userList = []
+        User.list(sort: 'username', order: 'ascending').each { User user ->
+            def userMap = [:]
+            user.properties.each {k, v ->
+                if (!(k in ['class', 'password', 'springSecurityService'])) {
+                    userMap."$k" = v
+                }
+            }
+            userList << userMap
+        }
+        render userList as JSON
     }
 
-    def teamSpeak() {
-
-    }
+    def teamSpeak() {}
 
     def ajaxRestartTS3ChatBot() {
         ts3Service.restartChatBot()

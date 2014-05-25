@@ -118,4 +118,9 @@ modules = {
         resource url: 'admin/js/plugin/msie-fix/jquery.mb.browser.min.js'
         resource url: 'admin/js/plugin/fastclick/fastclick.js'
     }
+
+    handlebars {
+        defaultBundle 'handlebars'
+        resource url: 'js/handlebars-v1.3.0.js'
+    }
 }

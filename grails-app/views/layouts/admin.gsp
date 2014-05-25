@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-    <title> SmartAdmin </title>
+    <title> Invicta Admin </title>
     <meta name="description" content="">
     <meta name="author" content="">
 

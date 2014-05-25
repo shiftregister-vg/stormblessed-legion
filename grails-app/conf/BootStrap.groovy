@@ -39,8 +39,12 @@ class BootStrap {
             UserRole.create(adminUser, memberRole)
         }
 
-        ts3Service.initChatBot()
-        ts3Service.initJoinHandler()
+        environments {
+            production {
+                ts3Service.initChatBot()
+                ts3Service.initJoinHandler()
+            }
+        }
     }
     def destroy = {
         ts3Service.teamSpeakService.ts3Api.exit()
