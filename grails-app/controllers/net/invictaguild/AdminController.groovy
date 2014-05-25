@@ -23,9 +23,24 @@ class AdminController {
                     userMap."$k" = v
                 }
             }
+            userMap.id = user.id
             userList << userMap
         }
         render userList as JSON
+    }
+
+    def ajaxUpdateUser() {
+        def user = userService.updateUser(
+            params.id as long,
+            params.username,
+            params.email,
+            params.boolean('enabled'),
+            params.boolean('accountExpired'),
+            params.boolean('passwordExpired'),
+            params.boolean('accountLocked')
+        )
+        def result = [success: (user != null)]
+        render result as JSON
     }
 
     def teamSpeak() {}

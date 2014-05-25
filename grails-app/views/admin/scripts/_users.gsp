@@ -5,7 +5,8 @@ Included in /admin/users.gsp to provide scripts
 <script id="usernameButton" type="text/x-handlebars-template">
     <button class="username-btn btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"
             data-username="{{username}}" data-userEnabled="{{enabled}}" data-accountExpired="{{accountExpired}}"
-            data-passwordExpired="{{passwordExpired}}" data-accountLocked="{{accountLocked}}">{{username}}</button>
+            data-passwordExpired="{{passwordExpired}}" data-accountLocked="{{accountLocked}}"
+            data-email="{{email}}" data-id="{{id}}">{{username}}</button>
 </script>
 
 <script id="editUserModalContent" type="text/x-handlebars-template">
@@ -23,67 +24,56 @@ Included in /admin/users.gsp to provide scripts
             </div>
 
             <div class="form-group">
-                <input type="password" id="password-input" class="form-control" placeholder="Password (leave blank to leave unchanged)" required/>
+                <input type="email" id="email-input" class="form-control" placeholder="Email" value="{{email}}" required/>
             </div>
 
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="form-group">
-                <label for="category">Category</label>
-                <select class="form-control" id="category">
-                    <option>Articles</option>
-                    <option>Tutorials</option>
-                    <option>Freebies</option>
-                </select>
+                <label for="enabled">
+                    <input type="checkbox" id="enabled" name="enabled" {{#if enabled}}checked="true"{{/if}} />
+                    <small>Enabled</small>
+                </label>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="form-group">
-                <label for="tags">Tags</label>
-                <input type="text" class="form-control" id="tags" placeholder="Tags"/>
+                <label for="accountExpired">
+                    <input type="checkbox" id="accountExpired" name="accountExpired" {{#if accountExpired}}checked="true"{{/if}} />
+                <small>Account Expired</small>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="passwordExpired">
+                    <input type="checkbox" id="passwordExpired" name="passwordExpired" {{#if passwordExpired}}checked="true"{{/if}} />
+                <small>Password Expired</small>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="accountLocked">
+                    <input type="checkbox" id="accountLocked" name="accountLocked" {{#if accountLocked}}checked="true"{{/if}} />
+                <small>Account Locked</small>
+                </label>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm well-primary">
-                <form class="form form-inline " role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="" placeholder="Date" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <select class="form-control">
-                            <option>Draft</option>
-                            <option>Published</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-sm">
-                            <span class="glyphicon glyphicon-floppy-disk"></span> Save
-                        </button>
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span> Preview
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">
         Cancel
     </button>
-    <button type="button" class="btn btn-primary">
+    <button id="saveUserEditButton" type="button" class="btn btn-primary">
         Save User
     </button>
 </div>
@@ -108,6 +98,7 @@ Included in /admin/users.gsp to provide scripts
     function initHandleBars() {
         invicta.usernameButtonTemplate = Handlebars.compile($('#usernameButton').html());
         invicta.editUserTemplate = Handlebars.compile($('#editUserModalContent').html());
+
         loadDataTableScripts();
     }
     function loadDataTableScripts() {
@@ -217,19 +208,10 @@ Included in /admin/users.gsp to provide scripts
         /* END TABLE TOOLS */
 
         $.getJSON("${createLink(controller: 'admin', action: 'ajaxLoadUsers')}").success(function(result){
-            $.each(result, function(i){
-                var user = result[i];
-                console.log(user);
-                console.log(invicta.usernameButtonTemplate(user));
-                invicta.userTable.fnAddData([
-                    invicta.usernameButtonTemplate(user),
-                    user.email,
-                    user.enabled,
-                    user.accountExpired,
-                    user.passwordExpired,
-                    user.accountLocked
-                ]);
+            $.each(result, function(i, user){
+                invicta.addUserToDT(user);
             });
+            invicta.reapplyHandler('.username-btn', 'click', invicta.usernameBtnClickHandler);
         });
 
     }
@@ -241,31 +223,80 @@ Included in /admin/users.gsp to provide scripts
         $.getJSON(url, params, function (result) {
             $('#smart-form-register').find("input, textarea").val("");
             $('#username-alert').html(result.username);
+            $('#success-alert-message').text('has been added successfully!');
             $('#success-alert').show('fast');
-            invicta.userTable.fnAddData([
-                invicta.usernameButtonTemplate(result),
-                result.email,
-                result.enabled,
-                result.accountExpired,
-                result.passwordExpired,
-                result.accountLocked
-            ]);
+            invicta.addUserToDT(result);
+            invicta.reapplyHandler('.username-btn', 'click', invicta.usernameBtnClickHandler);
         });
     });
 
-    $('.username-btn').on('click', function(){
-        invicta.selectedUsername = $(this).data('username');
-        var userData = {
-            username: invicta.selectedUsername,
-            enabled: $(this).data('userEnabled'),
-            accountExpired: $(this).data('accountExpired'),
-            passwordExpired: $(this).data('passwordExpired'),
-            accountLocked: $(this).data('accountLocked')
-        };
-        var html = invicta.editUserTemplate(userData);
-        $('#edit-user-modal-content-wrapper').html(html);
-    });
+    invicta.addUserToDT = function(user) {
+        console.log(user);
+        invicta.userTable.fnAddData([
+            invicta.usernameButtonTemplate(user),
+            user.email,
+            user.enabled,
+            user.accountExpired,
+            user.passwordExpired,
+            user.accountLocked,
+            user.id
+        ]);
+    };
 
+    invicta.usernameBtnClickHandler = function(){
+        invicta.selectedUsername = $(this).data('username');
+        invicta.selectedUserData = {
+            username: invicta.selectedUsername,
+            enabled: $(this).data('userenabled'),
+            accountExpired: $(this).data('accountexpired'),
+            passwordExpired: $(this).data('passwordexpired'),
+            accountLocked: $(this).data('accountlocked'),
+            email: $(this).data('email'),
+            id: $(this).data('id')
+        };
+        var html = invicta.editUserTemplate(invicta.selectedUserData);
+        $('#edit-user-modal-content-wrapper').html(html);
+        invicta.reapplyHandler('#saveUserEditButton', 'click', invicta.saveUserEditButtonClickHandler);
+    };
+
+    invicta.saveUserEditButtonClickHandler = function() {
+        // save all of the user info
+        invicta.selectedUserData.username = $('#username-input:visible').val();
+        invicta.selectedUserData.email = $('input#email-input:visible').val().trim();
+        invicta.selectedUserData.enabled = $('input#enabled:visible').prop('checked');
+        invicta.selectedUserData.accountExpired = $('input#accountExpired:visible').prop('checked');
+        invicta.selectedUserData.passwordExpired = $('input#passwordExpired:visible').prop('checked');
+        invicta.selectedUserData.accountLocked = $('input#accountLocked:visible').prop('checked');
+
+        $.each(invicta.userTable.fnGetData(), function(i, it){
+            if (it[6] === invicta.selectedUserData.id) {
+                invicta.userTable.fnUpdate([
+                    invicta.usernameButtonTemplate(invicta.selectedUserData),
+                    invicta.selectedUserData.email,
+                    invicta.selectedUserData.enabled,
+                    invicta.selectedUserData.accountExpired,
+                    invicta.selectedUserData.passwordExpired,
+                    invicta.selectedUserData.accountLocked,
+                    invicta.selectedUserData.id
+                ], i);
+            }
+        });
+
+        $.getJSON('${createLink(controller: 'admin', action: 'ajaxUpdateUser')}', invicta.selectedUserData, function(result){
+            // close the modal
+            $('#username-alert').html(invicta.selectedUserData.username);
+            $('#success-alert-message').text('has been updated successfully!');
+            $('#success-alert').show('fast');
+            $('#myModal').modal('hide');
+        });
+    };
+
+    invicta.reapplyHandler = function(selector, event, handler) {
+        $(selector).off(event, handler);
+        $(selector).on(event, handler);
+    };
+
+    $('.username-btn').on('click', invicta.usernameBtnClickHandler);
     $('#success-alert').hide();
 
 </script>

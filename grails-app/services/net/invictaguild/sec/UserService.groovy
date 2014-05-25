@@ -21,4 +21,15 @@ class UserService {
 
         registration
     }
+
+    User updateUser(long id, String username, String email, Boolean enabled, Boolean accountExpired, Boolean passwordExpired, Boolean accountLocked) {
+        User user = User.get(id)
+        user.username = username
+        user.email = email
+        user.enabled = enabled
+        user.accountExpired = accountExpired
+        user.passwordExpired = passwordExpired
+        user.accountLocked = accountLocked
+        user.save(flush: true, failOnError: true)
+    }
 }

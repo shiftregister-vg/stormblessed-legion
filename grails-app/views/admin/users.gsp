@@ -17,7 +17,7 @@
 <div class="alert alert-success fade in" id="success-alert">
     <button class="close" data-dismiss="alert">x</button>
     <i class="fa-fw fa fa-check"></i>
-    <strong id="username-alert"></strong> has been added successfully!
+    <strong id="username-alert"></strong> <span id="success-alert-message"></span>
 </div>
 
 <!-- widget grid -->
