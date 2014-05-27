@@ -17,6 +17,10 @@ class Forum {
         slug nullable: true, blank: false
     }
 
+    static mapping = {
+        sort "sortPosition"
+    }
+
     def beforeInsert() {
         slug = name.slugify()
     }

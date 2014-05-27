@@ -1,6 +1,7 @@
 package net.invictaguild
 
 import grails.converters.JSON
+import net.invictaguild.content.ForumGroup
 import net.invictaguild.sec.User
 
 class AdminController {
@@ -13,6 +14,8 @@ class AdminController {
     def dashboard() {}
 
     def users() {}
+
+    def forums() {}
 
     def ajaxLoadUsers() {
         def userList = []
@@ -55,4 +58,10 @@ class AdminController {
         def user = userService.createUser(params.username, params.password, params.email)
         render user as JSON
     }
+
+    def ajaxListForums() {
+        def forumGroups = (ForumGroup.list()*.properties).sort { it.sortPosition }
+        render forumGroups as JSON
+    }
+
 }

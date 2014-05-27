@@ -41,6 +41,12 @@
 </li>
 
 <li>
+    <g:link controller="admin" action="forums" title="Forums">
+        <i class="fa fa-lg fa-fw fa-comments-o"></i> <span class="menu-item-parent">Forums</span>
+    </g:link>
+</li>
+
+<li>
     <g:link controller="admin" action="teamSpeak" title="TeamSpeak">
         <i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">TeamSpeak</span>
     </g:link>
