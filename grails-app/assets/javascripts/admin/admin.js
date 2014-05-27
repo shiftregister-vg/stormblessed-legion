@@ -11,4 +11,5 @@
 //= require plugin/bootstrap-slider/bootstrap-slider
 //= require plugin/msie-fix/jquery.mb.browser
 //= require plugin/fastclick/fastclick
+//= require handlebars-v1.3.0
 //= require app
