@@ -10,10 +10,11 @@ Integrations
 
 The Invicta Web Platform (IWP) leverages a number of technologies to integrate with the tools our community is already using.
 
-- TeamSpeak
+- [TeamSpeak (via the teamspeak3 Grails plugin)](https://github.com/stevegood/grails-plugin-teamspeak3)
 - Steam
-- SKManager
+- [SKManager](https://github.com/stevegood/skmanager)
 - Facebook
 - Twitter
+- Twitch
 
 The above are only a handful of the technologies and services being leveraged (or soon to be leveraged) by IWP.
