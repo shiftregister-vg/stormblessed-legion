@@ -153,3 +153,4 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/admin/ajax/*':                  ['ROLE_ADMIN']
 ]
 grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.teamspeak3.autoconnect = false

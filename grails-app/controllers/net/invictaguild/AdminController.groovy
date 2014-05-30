@@ -17,6 +17,8 @@ class AdminController {
 
     def forums() {}
 
+    def teamSpeak() {}
+
     def ajaxLoadUsers() {
         def userList = []
         User.list(sort: 'username', order: 'ascending').each { User user ->
@@ -35,8 +37,8 @@ class AdminController {
     def ajaxUpdateUser() {
         def user = userService.updateUser(
             params.id as long,
-            params.username,
-            params.email,
+            params.username as String,
+            params.email as String,
             params.boolean('enabled'),
             params.boolean('accountExpired'),
             params.boolean('passwordExpired'),
@@ -46,10 +48,25 @@ class AdminController {
         render result as JSON
     }
 
-    def teamSpeak() {}
+    def ajaxStartTS3ChatBot() {
+        ts3Service.connect()
+        ts3Service.initChatBot()
+        ts3Service.initJoinHandler()
+        def result = [success: true]
+        render result as JSON
+    }
+
+    def ajaxStopTS3ChatBot() {
+        ts3Service.disconnect()
+        def result = [success: true]
+        render result as JSON
+    }
 
     def ajaxRestartTS3ChatBot() {
-        ts3Service.restartChatBot()
+        ts3Service.disconnect()
+        ts3Service.connect()
+        ts3Service.initChatBot()
+        ts3Service.initJoinHandler()
         def result = [success: true]
         render result as JSON
     }
