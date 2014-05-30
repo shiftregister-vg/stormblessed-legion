@@ -77,8 +77,15 @@ class AdminController {
     }
 
     def ajaxListForums() {
-        def forumGroups = (ForumGroup.list()*.properties).sort { it.sortPosition }
+        def forumGroups = ForumGroup.list().sort { it.sortPosition }*.toMap()
         render forumGroups as JSON
+    }
+
+    def ajaxDeleteForumGroup() {
+        def forumGroup = ForumGroup.get(params.id)
+        forumGroup.delete(flush: true)
+        def result = [success: (ForumGroup.countById(params.id) == 0)]
+        render result as JSON
     }
 
 }

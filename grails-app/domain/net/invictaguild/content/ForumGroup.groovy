@@ -1,6 +1,8 @@
 package net.invictaguild.content
 
-class ForumGroup {
+import net.invictaguild.serializable.MapSerializable
+
+class ForumGroup implements MapSerializable {
 
     Date dateCreated
     Date lastUpdated

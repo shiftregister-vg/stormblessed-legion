@@ -14,91 +14,80 @@
 
 <section id="widget-grid" class=""></section>
 
-<script id="forums-template" type="text/x-handlebars-template">
-    {{#each forumGroups}}
-    <div class="row">
-        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-12" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" role="widget">
-                <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                    -->
-                <header role="heading">
-                    <span class="widget-icon"> <i class="fa fa-comments-o"></i> </span>
-                    <h2>{{name}}</h2>
-                    <div class="widget-toolbar" role="menu">
-
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-                                <i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="javascript:void(0);">Option 1</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">Option 2</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">Option 3</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
-
-                <!-- widget div-->
-                <div role="content">
-
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
-                    </div>
-                    <!-- end widget edit box -->
-
-                    <!-- widget content -->
-                    <div class="widget-body">
-
-                        <ul>
-                            {{#each forums}}
-                            <li>
-                                <span class="fa fa-comments"></span> {{name}}
-                            </li>
-                            {{/each}}
-                        </ul>
-
-                    </div>
-                    <!-- end widget content -->
-
-                </div>
-                <!-- end widget div -->
-
-            </div>
-        </article>
-    </div>
-    {{/each}}
-</script>
+<g:render template="scripts/forums/forumsTemplate" />
+<g:render template="scripts/forums/editForumGroupModalTemplate" />
+<g:render template="scripts/forums/deleteForumGroupModalTemplate" />
 
 <script type="text/javascript">
     var invicta = invicta || {};
-    invicta.templates = {
-        forumGroups: Handlebars.compile($('#forums-template').html())
-    };
 
     (function($){
+        invicta.templates = {
+            forumGroups: Handlebars.compile($('#forums-template').html()),
+            editForumGroupModal: Handlebars.compile($('#editForumGroupModalTemplate').html()),
+            deleteForumGroupModal: Handlebars.compile($('#deleteForumGroupModalTemplate').html())
+        };
+
+        invicta.getForumGroup = function(id) {
+            var forumGroup;
+            $.each(invicta.forumGroups, function(i, fg){
+                if (fg.id == id) {
+                    forumGroup = fg;
+                }
+            });
+            return forumGroup;
+        };
+
+        invicta.initButtonHandlers = function() {
+            // init all the click handlers for the buttons
+            $('button.addForum').on('click', invicta.addForumClickHandler);
+            $('button.renameForumGroup').on('click', invicta.editForumGroupClickHandler);
+            $('button.deleteForumGroup').on('click', invicta.deleteForumGroupClickHandler);
+        };
+
+        invicta.addForumClickHandler = function() {
+            console.log('Add forum to ' + $(this).data('forum-group-id'));
+        };
+
+        invicta.editForumGroupClickHandler = function() {
+            var html = invicta.templates.editForumGroupModal(invicta.getForumGroup($(this).data('forum-group-id')));
+            $('body').prepend(html);
+            $('#editForumGroupModal').modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
+                $(this).remove();
+            });
+        };
+
+        invicta.deleteForumGroupClickHandler = function() {
+            var $this = $(this);
+            $this.children('.fa').addClass('fa-spin');
+
+
+            var html = invicta.templates.deleteForumGroupModal(invicta.getForumGroup($this.data('forum-group-id')));
+            $('body').prepend(html);
+            $('#deleteForumGroupModal').modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
+                $(this).remove();
+                $this.children('.fa-spin').removeClass('fa-spin');
+            }).on('shown.bs.modal', function(){
+                var $modal = $(this),
+                    success = function(){
+                        var $btn = $(this);
+                        $.getJSON('${createLink(controller: 'admin', action: 'ajaxDeleteForumGroup')}',
+                            {id: $this.data('forum-group-id')},
+                            function(result){
+                                $btn.off('click', success);
+                                $this.parents('.forumGroup').remove();
+                                $modal.modal('hide');
+                            }
+                        );
+                    };
+                $('#editForumGroupSaveButton').on('click', success);
+            });
+        };
+
         $.getJSON('${createLink(controller: 'admin', action: 'ajaxListForums')}',{}, function(result){
             invicta.forumGroups = result;
             $('#widget-grid').html(invicta.templates.forumGroups(invicta));
+            invicta.initButtonHandlers();
         });
     })(jQuery);
 </script>
