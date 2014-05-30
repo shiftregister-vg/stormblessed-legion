@@ -231,7 +231,6 @@ Included in /admin/users.gsp to provide scripts
     });
 
     invicta.addUserToDT = function(user) {
-        console.log(user);
         invicta.userTable.fnAddData([
             invicta.usernameButtonTemplate(user),
             user.email,

@@ -4,8 +4,6 @@ import com.github.theholywaffle.teamspeak3.api.event.ClientJoinEvent
 import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent
 import grails.transaction.Transactional
 
-import java.security.MessageDigest
-
 @Transactional
 class Ts3Service {
 
@@ -13,6 +11,8 @@ class Ts3Service {
     def grailsLinkGenerator
     def springSecurityService
     def teamSpeakService
+
+    static Boolean CONNECTED = false
 
     def initChatBot() {
         String nick = grailsApplication.config.grails.plugin.teamspeak3.nick
@@ -69,10 +69,18 @@ class Ts3Service {
         // TODO: set the groups and privs for the supplied clientId
     }
 
-    def restartChatBot() {
-        teamSpeakService.exit()
-        teamSpeakService.connect()
-        initChatBot()
-        initJoinHandler()
+    def connect() {
+        if (!CONNECTED) {
+            teamSpeakService.connect()
+            CONNECTED = true
+        }
+    }
+
+    def disconnect() {
+        if (CONNECTED) {
+            teamSpeakService.sendServerMessage "${grailsApplication.config.grails.plugin.teamspeak3.nick} is going offline!"
+            teamSpeakService.exit()
+            CONNECTED = false
+        }
     }
 }

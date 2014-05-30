@@ -66,7 +66,7 @@ grails.project.dependency.resolution = {
         compile ":mail:1.0.5"
         compile ":asynchronous-mail:1.0"
         compile ":quartz:1.0.1"
-        compile ":teamspeak3:0.1.6"
+        compile ":teamspeak3:0.1.7"
 
         // plugins needed at runtime but not for compilation
         runtime ':hibernate4:4.3.5.2'
