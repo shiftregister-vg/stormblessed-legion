@@ -1,7 +1,7 @@
-import net.invictaguild.content.ForumGroup
-import net.invictaguild.sec.Role
-import net.invictaguild.sec.User
-import net.invictaguild.sec.UserRole
+import com.stormblessedlegion.content.ForumGroup
+import com.stormblessedlegion.sec.Role
+import com.stormblessedlegion.sec.User
+import com.stormblessedlegion.sec.UserRole
 import org.stevegood.util.StringUtils
 
 class BootStrap {
@@ -21,10 +21,7 @@ class BootStrap {
 
         if (!ForumGroup.count()) {
             [
-                [name: 'Invicta', forums:['Welcome to Invicta', 'Crafting', 'Events']],
-                [name: 'Website', forums:['News & Announcements', 'Site Suggestions']],
-                [name: 'Community', forums:['General Discussion', 'Dungeons', 'Raiding', 'Guild Meetings', 'Off Topic', 'Other Games']],
-                [name: 'Class Discussion', forums:['Cleric Discussion', 'Mage Discussion', 'Rogue Discussion', 'Warrior Discussion']]
+                [name: 'Stormblessed Legion', forums:['Welcome to the Stormblessed Legion','Community Events']]
             ].each { grp ->
                 def group = forumGroupService.create(grp.name, false, true)
                 grp.forums.each { frm ->

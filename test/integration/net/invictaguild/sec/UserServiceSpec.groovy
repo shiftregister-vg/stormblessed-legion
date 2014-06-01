@@ -1,4 +1,4 @@
-package net.invictaguild.sec
+package com.stormblessedlegion.sec
 
 import spock.lang.Specification
 
