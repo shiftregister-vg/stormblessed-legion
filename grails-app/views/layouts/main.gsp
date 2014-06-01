@@ -13,7 +13,7 @@
 
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title><g:layoutTitle default="Home"/> - Invicta</title>
+    <title><g:layoutTitle default="Home"/> - Stormblessed Legion</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     %{--<r:require modules="fontawesome,application"/>--}%
@@ -169,8 +169,8 @@
                     <!-- Footer Col. -->
                     <div class="col-md-3 col-sm-3 footer-col">
                         <div class="footer-content">
-                            <div class="footer-content-logo">
-                                <img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/>
+                            <div class="footer-title">
+                                Who We Are
                             </div>
                             <div class="footer-content-text">
                                 <p>Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget
@@ -307,7 +307,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <div class="copyright-text">&copy; ${new Date().format('yyyy')} | <a href="http://invictaguild.net">Invicta</a> | v <g:meta name="app.version" /></div>
+                        <div class="copyright-text">&copy; ${new Date().format('yyyy')} | <a href="http://stormblessedlegion.com/">Stormblessed Legion</a> | v <g:meta name="app.version" /></div>
                     </div>
                     <div class="col-md-6 col-sm-6">
 

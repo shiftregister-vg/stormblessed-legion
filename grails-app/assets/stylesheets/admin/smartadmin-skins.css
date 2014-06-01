@@ -64,9 +64,9 @@ border: 1px solid #0d0f12;
 color:#fff;
 cursor: pointer;
 }.smart-style-1 .btn-header > :first-child > a {
-background: #fb3c4a;
-border: 1px solid #fb3c4a;
-color:#fff !important;
+/*background: #fb3c4a;*/
+/*border: 1px solid #fb3c4a;*/
+/*color:#fff !important;*/
 cursor: pointer !important;	
 }.smart-style-1 .btn-header > :first-child > a:hover {
 	opacity:.9;

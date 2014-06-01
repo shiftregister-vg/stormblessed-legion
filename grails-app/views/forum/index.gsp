@@ -24,7 +24,7 @@
             <g:each in="${group.forums.sort {it.sortPosition}}" var="forum">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <div class="content-box style5 small red">
+                        <div class="content-box style5 small flat-blue">
                             <h4 class="h4-body-title">
                                 <i class="icon-comment"></i>
                                 <g:link class="forum-link" controller="forum" action="viewForum" params="${[forumSlug: forum.slug]}">

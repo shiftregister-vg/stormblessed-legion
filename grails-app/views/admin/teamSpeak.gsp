@@ -5,7 +5,7 @@
   Time: 1:34 AM
 --%>
 
-<%@ page import="net.invictaguild.voip.Ts3Service" %>
+<%@ page import="com.stormblessedlegion.voip.Ts3Service" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -38,9 +38,9 @@
 </div>
 
 <script type="text/javascript">
-    var invicta = invicta || {};
+    var stormblessed = stormblessed || {};
     (function($){
-        invicta.ts3 = {
+        stormblessed.ts3 = {
             stopIconSpin: function() {
                 $('.ts3-btn').children('span.fa').removeClass('fa-spin');
             }
@@ -52,7 +52,7 @@
                 var $ts3Status = $('#ts3Status');
                 $ts3Status.html('Connected');
                 $ts3Status.parents('.alert').removeClass('alert-danger').addClass('alert-success');
-                invicta.ts3.stopIconSpin();
+                stormblessed.ts3.stopIconSpin();
             });
         });
 
@@ -62,7 +62,7 @@
                 var $ts3Status = $('#ts3Status');
                 $ts3Status.html('Disconnected');
                 $ts3Status.parents('.alert').removeClass('alert-success').addClass('alert-danger');
-                invicta.ts3.stopIconSpin();
+                stormblessed.ts3.stopIconSpin();
             });
         });
 

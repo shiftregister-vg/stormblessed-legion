@@ -19,18 +19,18 @@
 <g:render template="scripts/forums/deleteForumGroupModalTemplate" />
 
 <script type="text/javascript">
-    var invicta = invicta || {};
+    var stormblessed = stormblessed || {};
 
     (function($){
-        invicta.templates = {
+        stormblessed.templates = {
             forumGroups: Handlebars.compile($('#forums-template').html()),
             editForumGroupModal: Handlebars.compile($('#editForumGroupModalTemplate').html()),
             deleteForumGroupModal: Handlebars.compile($('#deleteForumGroupModalTemplate').html())
         };
 
-        invicta.getForumGroup = function(id) {
+        stormblessed.getForumGroup = function(id) {
             var forumGroup;
-            $.each(invicta.forumGroups, function(i, fg){
+            $.each(stormblessed.forumGroups, function(i, fg){
                 if (fg.id == id) {
                     forumGroup = fg;
                 }
@@ -38,31 +38,31 @@
             return forumGroup;
         };
 
-        invicta.initButtonHandlers = function() {
+        stormblessed.initButtonHandlers = function() {
             // init all the click handlers for the buttons
-            $('button.addForum').on('click', invicta.addForumClickHandler);
-            $('button.renameForumGroup').on('click', invicta.editForumGroupClickHandler);
-            $('button.deleteForumGroup').on('click', invicta.deleteForumGroupClickHandler);
+            $('button.addForum').on('click', stormblessed.addForumClickHandler);
+            $('button.renameForumGroup').on('click', stormblessed.editForumGroupClickHandler);
+            $('button.deleteForumGroup').on('click', stormblessed.deleteForumGroupClickHandler);
         };
 
-        invicta.addForumClickHandler = function() {
+        stormblessed.addForumClickHandler = function() {
             console.log('Add forum to ' + $(this).data('forum-group-id'));
         };
 
-        invicta.editForumGroupClickHandler = function() {
-            var html = invicta.templates.editForumGroupModal(invicta.getForumGroup($(this).data('forum-group-id')));
+        stormblessed.editForumGroupClickHandler = function() {
+            var html = stormblessed.templates.editForumGroupModal(stormblessed.getForumGroup($(this).data('forum-group-id')));
             $('body').prepend(html);
             $('#editForumGroupModal').modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
                 $(this).remove();
             });
         };
 
-        invicta.deleteForumGroupClickHandler = function() {
+        stormblessed.deleteForumGroupClickHandler = function() {
             var $this = $(this);
             $this.children('.fa').addClass('fa-spin');
 
 
-            var html = invicta.templates.deleteForumGroupModal(invicta.getForumGroup($this.data('forum-group-id')));
+            var html = stormblessed.templates.deleteForumGroupModal(stormblessed.getForumGroup($this.data('forum-group-id')));
             $('body').prepend(html);
             $('#deleteForumGroupModal').modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
                 $(this).remove();
@@ -85,9 +85,9 @@
         };
 
         $.getJSON('${createLink(controller: 'admin', action: 'ajaxListForums')}',{}, function(result){
-            invicta.forumGroups = result;
-            $('#widget-grid').html(invicta.templates.forumGroups(invicta));
-            invicta.initButtonHandlers();
+            stormblessed.forumGroups = result;
+            $('#widget-grid').html(stormblessed.templates.forumGroups(stormblessed));
+            stormblessed.initButtonHandlers();
         });
     })(jQuery);
 </script>

@@ -81,7 +81,7 @@ Included in /admin/users.gsp to provide scripts
 
 <script type="text/javascript">
 
-    var invicta = invicta || {};
+    var stormblessed = stormblessed || {};
 
     // DO NOT REMOVE : GLOBAL FUNCTIONS!
     pageSetUp();
@@ -96,8 +96,8 @@ Included in /admin/users.gsp to provide scripts
 
     loadScript("${assetPath(src: 'handlebars-v1.3.0.js')}", initHandleBars);
     function initHandleBars() {
-        invicta.usernameButtonTemplate = Handlebars.compile($('#usernameButton').html());
-        invicta.editUserTemplate = Handlebars.compile($('#editUserModalContent').html());
+        stormblessed.usernameButtonTemplate = Handlebars.compile($('#usernameButton').html());
+        stormblessed.editUserTemplate = Handlebars.compile($('#editUserModalContent').html());
 
         loadDataTableScripts();
     }
@@ -136,7 +136,7 @@ Included in /admin/users.gsp to provide scripts
         /*
          * BASIC
          */
-        invicta.userTable = $('#dt_basic').dataTable({
+        stormblessed.userTable = $('#dt_basic').dataTable({
             "sPaginationType": "bootstrap_full"
         });
 
@@ -209,9 +209,9 @@ Included in /admin/users.gsp to provide scripts
 
         $.getJSON("${createLink(controller: 'admin', action: 'ajaxLoadUsers')}").success(function(result){
             $.each(result, function(i, user){
-                invicta.addUserToDT(user);
+                stormblessed.addUserToDT(user);
             });
-            invicta.reapplyHandler('.username-btn', 'click', invicta.usernameBtnClickHandler);
+            stormblessed.reapplyHandler('.username-btn', 'click', stormblessed.usernameBtnClickHandler);
         });
 
     }
@@ -225,14 +225,14 @@ Included in /admin/users.gsp to provide scripts
             $('#username-alert').html(result.username);
             $('#success-alert-message').text('has been added successfully!');
             $('#success-alert').show('fast');
-            invicta.addUserToDT(result);
-            invicta.reapplyHandler('.username-btn', 'click', invicta.usernameBtnClickHandler);
+            stormblessed.addUserToDT(result);
+            stormblessed.reapplyHandler('.username-btn', 'click', stormblessed.usernameBtnClickHandler);
         });
     });
 
-    invicta.addUserToDT = function(user) {
-        invicta.userTable.fnAddData([
-            invicta.usernameButtonTemplate(user),
+    stormblessed.addUserToDT = function(user) {
+        stormblessed.userTable.fnAddData([
+            stormblessed.usernameButtonTemplate(user),
             user.email,
             user.enabled,
             user.accountExpired,
@@ -242,10 +242,10 @@ Included in /admin/users.gsp to provide scripts
         ]);
     };
 
-    invicta.usernameBtnClickHandler = function(){
-        invicta.selectedUsername = $(this).data('username');
-        invicta.selectedUserData = {
-            username: invicta.selectedUsername,
+    stormblessed.usernameBtnClickHandler = function(){
+        stormblessed.selectedUsername = $(this).data('username');
+        stormblessed.selectedUserData = {
+            username: stormblessed.selectedUsername,
             enabled: $(this).data('userenabled'),
             accountExpired: $(this).data('accountexpired'),
             passwordExpired: $(this).data('passwordexpired'),
@@ -253,49 +253,49 @@ Included in /admin/users.gsp to provide scripts
             email: $(this).data('email'),
             id: $(this).data('id')
         };
-        var html = invicta.editUserTemplate(invicta.selectedUserData);
+        var html = stormblessed.editUserTemplate(stormblessed.selectedUserData);
         $('#edit-user-modal-content-wrapper').html(html);
-        invicta.reapplyHandler('#saveUserEditButton', 'click', invicta.saveUserEditButtonClickHandler);
+        stormblessed.reapplyHandler('#saveUserEditButton', 'click', stormblessed.saveUserEditButtonClickHandler);
     };
 
-    invicta.saveUserEditButtonClickHandler = function() {
+    stormblessed.saveUserEditButtonClickHandler = function() {
         // save all of the user info
-        invicta.selectedUserData.username = $('#username-input:visible').val();
-        invicta.selectedUserData.email = $('input#email-input:visible').val().trim();
-        invicta.selectedUserData.enabled = $('input#enabled:visible').prop('checked');
-        invicta.selectedUserData.accountExpired = $('input#accountExpired:visible').prop('checked');
-        invicta.selectedUserData.passwordExpired = $('input#passwordExpired:visible').prop('checked');
-        invicta.selectedUserData.accountLocked = $('input#accountLocked:visible').prop('checked');
+        stormblessed.selectedUserData.username = $('#username-input:visible').val();
+        stormblessed.selectedUserData.email = $('input#email-input:visible').val().trim();
+        stormblessed.selectedUserData.enabled = $('input#enabled:visible').prop('checked');
+        stormblessed.selectedUserData.accountExpired = $('input#accountExpired:visible').prop('checked');
+        stormblessed.selectedUserData.passwordExpired = $('input#passwordExpired:visible').prop('checked');
+        stormblessed.selectedUserData.accountLocked = $('input#accountLocked:visible').prop('checked');
 
-        $.each(invicta.userTable.fnGetData(), function(i, it){
-            if (it[6] === invicta.selectedUserData.id) {
-                invicta.userTable.fnUpdate([
-                    invicta.usernameButtonTemplate(invicta.selectedUserData),
-                    invicta.selectedUserData.email,
-                    invicta.selectedUserData.enabled,
-                    invicta.selectedUserData.accountExpired,
-                    invicta.selectedUserData.passwordExpired,
-                    invicta.selectedUserData.accountLocked,
-                    invicta.selectedUserData.id
+        $.each(stormblessed.userTable.fnGetData(), function(i, it){
+            if (it[6] === stormblessed.selectedUserData.id) {
+                stormblessed.userTable.fnUpdate([
+                    stormblessed.usernameButtonTemplate(stormblessed.selectedUserData),
+                    stormblessed.selectedUserData.email,
+                    stormblessed.selectedUserData.enabled,
+                    stormblessed.selectedUserData.accountExpired,
+                    stormblessed.selectedUserData.passwordExpired,
+                    stormblessed.selectedUserData.accountLocked,
+                    stormblessed.selectedUserData.id
                 ], i);
             }
         });
 
-        $.getJSON('${createLink(controller: 'admin', action: 'ajaxUpdateUser')}', invicta.selectedUserData, function(result){
+        $.getJSON('${createLink(controller: 'admin', action: 'ajaxUpdateUser')}', stormblessed.selectedUserData, function(result){
             // close the modal
-            $('#username-alert').html(invicta.selectedUserData.username);
+            $('#username-alert').html(stormblessed.selectedUserData.username);
             $('#success-alert-message').text('has been updated successfully!');
             $('#success-alert').show('fast');
             $('#myModal').modal('hide');
         });
     };
 
-    invicta.reapplyHandler = function(selector, event, handler) {
+    stormblessed.reapplyHandler = function(selector, event, handler) {
         $(selector).off(event, handler);
         $(selector).on(event, handler);
     };
 
-    $('.username-btn').on('click', invicta.usernameBtnClickHandler);
+    $('.username-btn').on('click', stormblessed.usernameBtnClickHandler);
     $('#success-alert').hide();
 
 </script>

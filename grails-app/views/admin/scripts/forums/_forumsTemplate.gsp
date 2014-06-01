@@ -2,7 +2,7 @@
 {{#each forumGroups}}
 <div class="row forumGroup">
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-12"
+        <div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="wid-id-12"
              data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false"
              data-widget-fullscreenbutton="false" data-widget-deletebutton="false" role="widget">
 
