@@ -8,6 +8,7 @@ class BootStrap {
 
     def forumService
     def forumGroupService
+    def grailsApplication
     def ts3Service
 
     def init = { servletContext ->
@@ -38,8 +39,10 @@ class BootStrap {
 
         environments {
             production {
-                ts3Service.initChatBot()
-                ts3Service.initJoinHandler()
+                if (grailsApplication.config.grails.plugin.teamspeak3.autoconnect) {
+                    ts3Service.initChatBot()
+                    ts3Service.initJoinHandler()
+                }
             }
         }
     }
