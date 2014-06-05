@@ -10,13 +10,12 @@ class ForumGroupService {
     }
 
     def create(String name, boolean flush = false, boolean failOnError = false) {
-        def lastGrp = ForumGroup.list(sort: 'sortPosition', order: 'desc', max: 1)?.getAt(0)
-        def nextPos = lastGrp ? lastGrp.sortPosition+1 : 0
-        new ForumGroup(name: name, sortPosition: nextPos).save(flush: flush, failOnError: failOnError)
+        new ForumGroup(name: name).save(flush: flush, failOnError: failOnError)
     }
 
-    def update(String name, ForumGroup group) {
+    def update(String name, ForumGroup group, boolean flush = false, boolean failOnError = false) {
         group.name = name
-        group.save()
+        group.save(flush: flush, failOnError: failOnError)
+        group
     }
 }

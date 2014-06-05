@@ -6,6 +6,8 @@ import grails.converters.JSON
 
 class AdminController {
 
+    def forumService
+    def forumGroupService
     def ts3Service
     def userService
 
@@ -81,11 +83,22 @@ class AdminController {
         render forumGroups as JSON
     }
 
+    def ajaxUpdateForumGroup() {
+        def forumGroup = forumGroupService.update(params.name, ForumGroup.get(params.id), true)
+        render([success: !forumGroup.hasErrors()] as JSON)
+    }
+
     def ajaxDeleteForumGroup() {
         def forumGroup = ForumGroup.get(params.id)
         forumGroup.delete(flush: true)
         def result = [success: (ForumGroup.countById(params.id) == 0)]
         render result as JSON
+    }
+
+    def ajaxAddForumToGroup() {
+        def forumGroup = ForumGroup.get(params.id)
+        def forum = forumService.createForum(forumGroup, params.name, true)
+        render(forum.toMap() as JSON)
     }
 
 }

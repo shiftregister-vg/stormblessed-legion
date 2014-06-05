@@ -25,6 +25,7 @@ class Forum implements MapSerializable {
 
     def beforeInsert() {
         slug = name.slugify()
+        sortPosition = Forum.count()
     }
 
     def beforeUpdate() {

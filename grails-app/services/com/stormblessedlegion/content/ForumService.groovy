@@ -18,17 +18,14 @@ class ForumService {
     }
 
     def createForum(ForumGroup group, String name, boolean flush = false, boolean failOnError = false) {
-        def lastForum = Forum.findAllByGroup(group, [sort: 'sortPosition', order: 'desc', max: 1])?.getAt(0)
-        def nextPos = lastForum ? lastForum.sortPosition+1 : 0
         def forum = Forum.findOrCreateByNameAndGroup(name, group)
-        if (!forum.id)
-            forum.sortPosition = nextPos
         forum.save(flush: flush, failOnError: failOnError)
+        forum
     }
 
-    def updateForum(Forum forum, String name) {
+    def updateForum(Forum forum, String name, boolean flush = false, boolean failOnError = false) {
         forum.name = name
-        forum.save()
+        forum.save(flush: flush, failOnError: failOnError)
     }
 
     def deleteForum(Forum forum) {

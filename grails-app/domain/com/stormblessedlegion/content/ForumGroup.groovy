@@ -19,4 +19,8 @@ class ForumGroup implements MapSerializable {
         sort 'sortPosition'
         forums sort: 'sortPosition'
     }
+
+    def beforeInsert() {
+        sortPosition = ForumGroup.count()
+    }
 }
