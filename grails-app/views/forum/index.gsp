@@ -27,7 +27,7 @@
                         <div class="content-box style5 small flat-blue">
                             <h4 class="h4-body-title">
                                 <i class="icon-comment"></i>
-                                <g:link class="forum-link" controller="forum" action="viewForum" params="${[forumSlug: forum.slug]}">
+                                <g:link class="forum-link" controller="forum" action="viewForum" params="${[forumSlug: forum.slug, groupSlug: group.slug]}">
                                     <strong>${forum.name}</strong>
                                 </g:link>
                             </h4>

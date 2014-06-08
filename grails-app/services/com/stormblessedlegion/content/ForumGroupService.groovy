@@ -18,4 +18,8 @@ class ForumGroupService {
         group.save(flush: flush, failOnError: failOnError)
         group
     }
+
+    Boolean nameIsUnique(String name) {
+        ForumGroup.countBySlug(name.slugify()) == 0
+    }
 }

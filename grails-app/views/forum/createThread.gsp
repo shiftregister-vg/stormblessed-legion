@@ -14,7 +14,7 @@
 
 <body>
 
-<g:form controller="forum" action="saveThread" params="${[forumSlug: params.forumSlug]}" class="form-wrapper" useToken="true">
+<g:form controller="forum" action="saveThread" params="${[forumSlug: params.forumSlug, groupSlug: params.groupSlug]}" class="form-wrapper" useToken="true">
     <div class="form-group clearfix">
         <label class="control-label" for="threadName">Subject *</label>
 

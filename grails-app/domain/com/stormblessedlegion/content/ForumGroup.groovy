@@ -8,11 +8,13 @@ class ForumGroup implements MapSerializable {
     Date lastUpdated
 
     String name
+    String slug
     int sortPosition
 
     static hasMany = [forums:Forum]
 
     static constraints = {
+        slug nullable: true, blank: false
     }
 
     static mapping = {
@@ -22,5 +24,11 @@ class ForumGroup implements MapSerializable {
 
     def beforeInsert() {
         sortPosition = ForumGroup.count()
+        slug = name.slugify()
+    }
+
+    def beforeUpdate() {
+        if (isDirty('name'))
+            slug = name.slugify()
     }
 }

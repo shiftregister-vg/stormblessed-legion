@@ -9,8 +9,8 @@ class ForumService {
         Forum.list(sort: 'sortPosition', order: 'asc')
     }
 
-    def getForumBySlug(String slug) {
-        Forum.findBySlug(slug)
+    def getForumBySlugAndGroup(String slug, String groupSlug) {
+        Forum.findBySlugAndGroup(slug, ForumGroup.findBySlug(groupSlug))
     }
 
     def getThreadByForumAndSlug(Forum forum, String slug) {

@@ -101,4 +101,14 @@ class AdminController {
         render(forum.toMap() as JSON)
     }
 
+    def ajaxForumGroupIsUnique() {
+        render([isUnique: forumGroupService.nameIsUnique(params.name)] as JSON)
+    }
+
+    def ajaxCreateForumGroup() {
+        def forumGroup = forumGroupService.create(params.name.trim(), true)
+        def dataMap = forumGroup.toMap()
+        render dataMap as JSON
+    }
+
 }

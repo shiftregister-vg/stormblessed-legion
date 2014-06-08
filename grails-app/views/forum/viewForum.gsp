@@ -35,7 +35,7 @@
             <g:each in="${forum.threads}" var="thread">
                 <tr>
                     <td>
-                        <g:link controller="forum" action="viewThread" params="${[threadSlug: thread.slug, forumSlug: params.forumSlug]}">
+                        <g:link controller="forum" action="viewThread" params="${[threadSlug: thread.slug, forumSlug: params.forumSlug, groupSlug: params.groupSlug]}">
                             ${thread.name}
                         </g:link>
                     </td>

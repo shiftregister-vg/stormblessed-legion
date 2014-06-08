@@ -15,16 +15,16 @@ class ForumController {
     }
 
     def viewForum() {
-        [forum: forumService.getForumBySlug(params.forumSlug)]
+        [forum: forumService.getForumBySlugAndGroup(params.forumSlug, params.groupSlug)]
     }
 
     def viewThread() {
-        Forum forum = forumService.getForumBySlug(params.forumSlug)
+        Forum forum = forumService.getForumBySlugAndGroup(params.forumSlug, params.groupSlug)
         [thread: forumService.getThreadByForumAndSlug(forum, params.threadSlug)]
     }
 
     def createThread() {
-        Forum forum = forumService.getForumBySlug(params.forumSlug)
+        Forum forum = forumService.getForumBySlugAndGroup(params.forumSlug, params.groupSlug)
         Thread thread = new Thread(forum: forum)
         Post post = new Post(thread: thread)
         [thread: thread, post: post]
@@ -32,17 +32,17 @@ class ForumController {
 
     def saveThread() {
         User author = User.findByUsername(springSecurityService.principal.username)
-        Forum forum = forumService.getForumBySlug(params.forumSlug)
+        Forum forum = forumService.getForumBySlugAndGroup(params.forumSlug, params.groupSlug)
         Thread thread = threadService.createThread(forum, params.threadName, false, false)
         postService.createPost(thread, params.postMarkdown, author, false, false)
 
-        redirect action: 'viewThread', params: [forumSlug: forum.slug, threadSlug: thread.slug]
+        redirect action: 'viewThread', params: [forumSlug: forum.slug, threadSlug: thread.slug, groupSlug: params.groupSlug]
         return
     }
 
     def addPostToThread() {
         User author = User.findByUsername(springSecurityService.principal.username)
-        Forum forum = forumService.getForumBySlug(params.forumSlug)
+        Forum forum = forumService.getForumBySlugAndGroup(params.forumSlug, params.groupSlug)
         Thread thread = threadService.getThreadByForumAndSlug(forum, params.threadSlug)
 
         postService.createPost(thread, params.postMarkdown, author, false, false)
