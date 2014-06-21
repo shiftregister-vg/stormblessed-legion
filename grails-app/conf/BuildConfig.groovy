@@ -56,10 +56,10 @@ grails.project.dependency.resolution = {
 
     plugins {
         // plugins for the build system only
-        build ':tomcat:7.0.52.1'
+        build ':tomcat:7.0.54'
 
         // plugins for the compile step
-        compile ":scaffolding:2.1.0"
+        compile ':scaffolding:2.1.1'
         compile ':cache:1.1.3'
         compile ":spring-security-core:2.0-RC3"
         compile ":markdown:1.1.1"
@@ -69,12 +69,12 @@ grails.project.dependency.resolution = {
         compile ":teamspeak3:0.1.7"
 
         // plugins needed at runtime but not for compilation
-        runtime ':hibernate4:4.3.5.2'
+        runtime ':hibernate4:4.3.5.4' // or ':hibernate:3.6.10.16'
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.0.2"
 
         // An alternative to the default resources plugin is the asset-pipeline plugin
-        compile ":asset-pipeline:1.8.7"
+        compile ':asset-pipeline:1.8.11'
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.5.5"
