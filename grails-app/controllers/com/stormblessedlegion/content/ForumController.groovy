@@ -46,7 +46,7 @@ class ForumController {
         Thread thread = threadService.getThreadByForumAndSlug(forum, params.threadSlug)
 
         postService.createPost(thread, params.postMarkdown, author, false, false)
-        redirect action: 'viewThread', params: [forumSlug: forum.slug, threadSlug: thread.slug]
+        redirect action: 'viewThread', params: [forumSlug: forum.slug, threadSlug: thread.slug, groupSlug: params.groupSlug]
         return
     }
 }
