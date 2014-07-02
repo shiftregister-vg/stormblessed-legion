@@ -1,5 +1,6 @@
 package com.stormblessedlegion
 
+import com.stormblessedlegion.content.Forum
 import com.stormblessedlegion.content.ForumGroup
 import com.stormblessedlegion.sec.User
 import grails.converters.JSON
@@ -109,6 +110,25 @@ class AdminController {
         def forumGroup = forumGroupService.create(params.name.trim(), true)
         def dataMap = forumGroup.toMap()
         render dataMap as JSON
+    }
+
+    def ajaxEditForum() {
+        def forum = Forum.get(params.id)
+        forumService.updateForum(forum, params.name)
+        render(forum.toMap() as JSON)
+    }
+
+    def ajaxDeleteForum() {
+        def forum = Forum.get(params.id)
+        forumService.deleteForum(forum)
+        render([success: (Forum.countById(params.id) == 0)] as JSON)
+    }
+
+    def ajaxSortForumsInGroup() {
+        params.forums?.split(',')?.eachWithIndex { id, i ->
+            forumService.setForumPostion(Forum.get(id), i)
+        }
+        render([success: true] as JSON)
     }
 
 }

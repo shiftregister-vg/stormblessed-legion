@@ -39,4 +39,10 @@ class ForumService {
         forum.save()
     }
 
+    def setForumPostion(Forum forum, int position, boolean flush = false, boolean failOnError = false) {
+        forum.sortPosition = position
+        forum.save(flush: flush, failOnError: failOnError)
+        forum
+    }
+
 }

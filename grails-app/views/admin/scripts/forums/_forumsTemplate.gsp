@@ -39,10 +39,25 @@
                 <!-- widget content -->
                 <div class="widget-body">
 
-                    <ul>
+                    <ul class="list-group sortable-forums" data-groupid="{{id}}">
                         {{#each forums}}
-                        <li>
-                            <span class="fa fa-comments"></span> {{name}}
+                        <li class="list-group-item" data-id="{{id}}">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-9 col-lg-9">
+                                    <span class="fa fa-comments"></span>
+                                    <a class="forum" href="#" data-id="{{id}}" data-groupid="{{group.id}}">
+                                        {{name}}
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <div class="btn-group pull-right">
+                                        <button class="remove-forum btn btn-xs btn-danger" data-id="{{id}}" data-groupid="{{group.id}}">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         {{/each}}
                     </ul>

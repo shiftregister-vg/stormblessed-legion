@@ -30,6 +30,8 @@
 <g:render template="scripts/forums/editForumGroupModalTemplate" />
 <g:render template="scripts/forums/createForumModalTemplate" />
 <g:render template="scripts/forums/deleteForumGroupModalTemplate" />
+<g:render template="scripts/forums/deleteForumModalTemplate" />
+<g:render template="scripts/forums/editForumModalTemplate" />
 
 
 <script type="text/javascript">
@@ -41,8 +43,10 @@
                 forumGroups: Handlebars.compile($('#forums-template').html()),
                 editForumGroupModal: Handlebars.compile($('#editForumGroupModalTemplate').html()),
                 deleteForumGroupModal: Handlebars.compile($('#deleteForumGroupModalTemplate').html()),
+                deleteForumModal: Handlebars.compile($('#deleteForumModalTemplate').html()),
                 createForumModal: Handlebars.compile($('#createForumModalTemplate').html()),
-                createForumGroupModal: Handlebars.compile($('#createForumGroupTemplate').html())
+                createForumGroupModal: Handlebars.compile($('#createForumGroupTemplate').html()),
+                editForumModal: Handlebars.compile($('#editForumModalTemplate').html())
             }),
             getForumGroup: function(id) {
                 var forumGroup;
@@ -53,11 +57,27 @@
                 });
                 return forumGroup;
             },
+            getForum: function(id, group) {
+                var forum;
+                $.each(group.forums, function(i, f){
+                    if (f.id === id) {
+                        forum = f;
+                    }
+                });
+                return forum;
+            },
             initButtonHandlers: function() {
                 // init all the click handlers for the buttons
                 $('button.addForum').on('click', stormblessed.addForumClickHandler);
                 $('button.renameForumGroup').on('click', stormblessed.editForumGroupClickHandler);
                 $('button.deleteForumGroup').on('click', stormblessed.deleteForumGroupClickHandler);
+                $('a.forum').on('click', stormblessed.editForumClickHandler);
+                $('button.remove-forum').on('click', stormblessed.removeForumClickHandler);
+
+                $('.sortable-forums').sortable({
+                    placeholder: "ui-state-highlight",
+                    stop: stormblessed.forumsSortHandler
+                });
             },
             addForumClickHandler: function() {
                 var $this = $(this),
@@ -173,6 +193,73 @@
                     success: function() {
                         $this.children('.fa').removeClass('fa-spin');
                     }
+                });
+            },
+
+            editForumClickHandler: function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                var $this = $(this),
+                    forum = stormblessed.getForum($this.data('id'), stormblessed.getForumGroup($this.data('groupid'))),
+                    html = stormblessed.templates.editForumModal(forum);
+
+                $('body').append(html);
+                var $modal = $('#editForumModal');
+                $modal.modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
+                    $modal.remove();
+                });
+                $('#edit-forum-submit').on('click', stormblessed.updateForum);
+            },
+
+            updateForum: function() {
+                var $this = $(this),
+                    forum = stormblessed.getForum($this.data('id'), stormblessed.getForumGroup($this.data('groupid')))
+                    nameVal = $('#edit-forum-name').val().trim();
+
+                if (nameVal.length) {
+                    // TODO: submit the data back to the server to be saved
+                    $.getJSON('${createLink(controller: 'admin', action: 'ajaxEditForum')}',{id: $this.data('id'), name: nameVal}, function(resp){
+                        $('#editForumModal').modal('hide');
+                        stormblessed.listForums();
+                    });
+                } else {
+                    alert('Name is a required field');
+                }
+            },
+
+            removeForumClickHandler: function() {
+                var $this = $(this),
+                    forum = stormblessed.getForum($this.data('id'), stormblessed.getForumGroup($this.data('groupid'))),
+                    html = stormblessed.templates.deleteForumModal(forum);
+
+                $('body').append(html);
+                var $modal = $('#deleteForumModal');
+                $modal.modal({show: true, keyboard: true}).on('hidden.bs.modal', function(){
+                    $modal.remove();
+                });
+
+                $('#deleteForumButton').on('click', stormblessed.deleteForum);
+            },
+
+            deleteForum: function() {
+                var $this = $(this),
+                    forum = stormblessed.getForum($this.data('id'), stormblessed.getForumGroup($this.data('groupid'))),
+                    $modal = $('#deleteForumModal');
+
+                $.getJSON('${createLink(controller: 'admin', action: 'ajaxDeleteForum')}', {id: forum.id}, function(resp){
+                    stormblessed.listForums();
+                    $modal.modal('hide');
+                });
+            },
+
+            forumsSortHandler: function() {
+                var $this = $(this),
+                    group = stormblessed.getForumGroup($this.data('groupid')),
+                    forumIDs = $this.sortable('toArray', {attribute: 'data-id'}),
+                    data = {id: group.id, forums: forumIDs.join()};
+
+                $.getJSON('${createLink(controller: 'admin', action: 'ajaxSortForumsInGroup')}', data, function(resp){
+                    // do nothing since the list items are already sorted
                 });
             }
         });
