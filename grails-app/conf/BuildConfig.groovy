@@ -84,6 +84,12 @@ grails.project.dependency.resolution = {
 
         provided ":version-update:1.1.0"
 
-        test ":code-coverage:2.0.3-1"
+        // Coveralls plugin
+        build(':coveralls:0.1.3', ':rest-client-builder:1.0.3') {
+            export = false
+        }
+        test(':code-coverage:1.2.7') {
+            export = false
+        }
     }
 }

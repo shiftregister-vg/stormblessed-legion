@@ -1,9 +1,8 @@
-anguage: groovy
-jdk:
-  - oraclejdk7
-branches:
-  only:
-    - master
-script: ./grailsw refresh-dependencies
-  && ./grailsw test-app
-  && ./grailsw war
+// .travis.yml
+language: groovy
+jdk: oraclejdk7
+script:
+  - ./grailsw refresh-dependencies
+  - ./grailsw test-app -coverage -xml
+after_success:
+  - ./grailsw coveralls
