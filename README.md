@@ -18,3 +18,10 @@ The Invicta Web Platform (IWP) leverages a number of technologies to integrate w
 - Twitch
 
 The above are only a handful of the technologies and services being leveraged (or soon to be leveraged) by IWP.
+
+
+Build Status
+============
+
+[![Build Status](https://travis-ci.org/stevegood/stormblessed-legion.svg?branch=master)](https://travis-ci.org/stevegood/stormblessed-legion)
+[![Coverage Status](https://img.shields.io/coveralls/stevegood/stormblessed-legion.svg)](https://coveralls.io/r/stevegood/stormblessed-legion?branch=master)
