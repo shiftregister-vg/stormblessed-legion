@@ -89,7 +89,7 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-grails.siteName = 'Invicta'
+grails.siteName = 'Stormblessed Legion'
 environments {
     development {
         grails.logging.jul.usebridge = true
@@ -97,7 +97,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "http://beta.invictaguild.net"
+        grails.serverURL = "http://stormblessedlegion.com"
     }
 }
 
