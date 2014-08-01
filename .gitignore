@@ -19,3 +19,4 @@ stacktrace.log
 *.iml
 .project
 .classpath
+.c9
